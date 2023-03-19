@@ -38,7 +38,7 @@ const App: React.FC<{}> = () => {
     <FormGroup>
       <FormControlLabel
         control={<Switch checked={checked} onChange={handleChange} />}
-        label="Automatically replace all anchor tags to go through menlo"
+        label="(Experimental) Automatically replace links"
       />
       {/* <br /> */}
       <Button variant="outlined" onClick={clearStorage}>
