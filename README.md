@@ -6,10 +6,54 @@ Browser extension that adds context menu that makes webpage links to be opened v
 
 (Only supports chrome, for now)
 
+## Development
+### Install
 
+```sh
+brew install yarn
+```
+install yarn (with brew or npm)
+
+```sh
+yarn install
+```
+Setup
+
+```sh
+yarn dlx @yarnpkg/sdks vscode
+```
+Install [zipfs](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) vscode extension & configure editor sdk
+
+```sh
+yarn plugin import typescript
+```
+Install [yarn typescript plugin](https://github.com/yarnpkg/berry/tree/master/packages/plugin-typescript)
+
+### Run locally
+```
+yarn start
+```
+run locally.
+
+Go to `chrome://extensions`, select `Load unpacked` and select `./dist` folder.
+
+Refresh manually when updated.
 
 ## Todo
-- [ ] auto-redirect all links
+- [x] use [chrome-types](https://www.npmjs.com/package/chrome-types)
+- [x] auto-redirect all links
 - [ ] multi browser support
-- [ ] use [chrome-types](https://www.npmjs.com/package/chrome-types)
+  - firefox
+  - safari
 - [ ] build workflows
+
+### references
+- Chrome extension docs
+  - MV3: https://developer.chrome.com/docs/extensions/mv3/
+  - API Reference: https://developer.chrome.com/docs/extensions/reference/
+    - chrome.storage: https://developer.chrome.com/docs/extensions/reference/storage/
+- react chrome-extension boilerplate: https://github.com/JasonXian/react-chrome-extension-boilerplate
+
+#### 참고자료
+- yarn setup: https://haranglog.tistory.com/28
+- chrome extension 개발기: https://80000coding.oopy.io/34a2083b-c159-4524-b5f2-750d3ab4fbba
