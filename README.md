@@ -37,7 +37,7 @@ yarn start
 ```
 run locally.
 
-Go to [`chrome://extensions`](chrome://extensions/), select `Load unpacked` and select `./dist` folder.
+Go to `chrome://extensions`, select `Load unpacked` and select `./dist` folder.
 
 Refresh manually when updated.
 
