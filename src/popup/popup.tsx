@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-import Button from "@mui/material/Button";
+import { Typography, Switch, FormGroup, FormControlLabel } from "@mui/material";
 import "./popup.css";
 
 const App: React.FC<{}> = () => {
@@ -38,12 +35,15 @@ const App: React.FC<{}> = () => {
     <FormGroup>
       <FormControlLabel
         control={<Switch checked={checked} onChange={handleChange} />}
-        label="(Experimental) Automatically replace links"
+        label="(Experimental) Automatically replace all links"
       />
-      {/* <br /> */}
-      <Button variant="outlined" onClick={clearStorage}>
+      <Typography variant="subtitle1" align="right">
+        ⚠️ Note: Refresh page after change
+      </Typography>
+
+      {/* <Button variant="outlined" onClick={clearStorage}>
         DEBUG - clear storage
-      </Button>
+      </Button> */}
     </FormGroup>
   );
 };
