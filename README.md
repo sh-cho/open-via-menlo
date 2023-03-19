@@ -22,7 +22,9 @@ Setup
 ```sh
 yarn dlx @yarnpkg/sdks vscode
 ```
-Install [zipfs](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) vscode extension & configure editor sdk
+Install [zipfs](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) vscode extension
+
+And configure editor sdk (<kbd>cmd</kbd>+<kbd>shift</kbd>+<kbd>p</kbd> -> `Use Workspace Version (.yarn/sdks/typescript/lib)`)
 
 ```sh
 yarn plugin import typescript
