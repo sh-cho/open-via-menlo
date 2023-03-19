@@ -1,17 +1,19 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import PersonIcon from "@mui/icons-material/Person";
 
 const App: React.FC<{}> = () => {
   return (
     <List>
-      <ListItem disablePadding>
+      <ListItem component="a" href="https://github.com/sh-cho/open-via-menlo">
         <ListItemButton>
           <ListItemIcon>
             <GitHubIcon />
@@ -19,7 +21,7 @@ const App: React.FC<{}> = () => {
           <ListItemText primary="Repository" />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding>
+      <ListItem component="a" href="https://github.com/sh-cho">
         <ListItemButton>
           <ListItemIcon>
             <PersonIcon />
