@@ -41,6 +41,13 @@ Go to `chrome://extensions`, select `Load unpacked` and select `./dist` folder.
 
 Refresh manually when updated.
 
+### Build prod
+```
+yarn build
+```
+
+TODO: build workflow
+
 ## Todo
 - [x] use [chrome-types](https://www.npmjs.com/package/chrome-types)
 - [x] auto-redirect all links
