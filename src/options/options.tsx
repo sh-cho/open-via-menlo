@@ -1,13 +1,33 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import "./options.css";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import PersonIcon from "@mui/icons-material/Person";
 
 const App: React.FC<{}> = () => {
   return (
-    <div>
-      <img src="icon-128.png" />
-      Sorry, this page is not yet implemented.
-    </div>
+    <List>
+      <ListItem disablePadding>
+        <ListItemButton>
+          <ListItemIcon>
+            <GitHubIcon />
+          </ListItemIcon>
+          <ListItemText primary="Repository" />
+        </ListItemButton>
+      </ListItem>
+      <ListItem disablePadding>
+        <ListItemButton>
+          <ListItemIcon>
+            <PersonIcon />
+          </ListItemIcon>
+          <ListItemText primary="Author" />
+        </ListItemButton>
+      </ListItem>
+    </List>
   );
 };
 
