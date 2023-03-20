@@ -8,6 +8,18 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
+import _ from "lodash";
+
+const handleOnChange = _.debounce(
+  (event: React.ChangeEvent<HTMLInputElement>) => {
+    const patterns = event.target.value
+      .split("\n")
+      .filter((pattern) => pattern.length > 0);
+    console.log(`💬 excludeUrlPatterns set: ${patterns}`);
+    chrome.storage.sync.set({ excludeUrlPatterns: patterns });
+  },
+  250
+);
 
 const App: React.FC<{}> = () => {
   return (
@@ -24,22 +36,17 @@ const App: React.FC<{}> = () => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box component="main" sx={{ p: 3 }}>
+      <Box component="main" sx={{ p: 3, width: 1 }}>
         <Toolbar />
-        <Box
-          component="form"
-          sx={{
-            "& .MuiTextField-root": { m: 1, width: "80ch" },
-          }}
-          noValidate
-          autoComplete="off"
-        >
+        <Box component="form" noValidate autoComplete="off">
           <TextField
             id="exclude-url-patterns"
             label="(Optional) Exclude URL patterns"
+            fullWidth
             multiline
             minRows={4}
-            helperText="➡️ glob patterns, one per line. (ex. https://*.example.com/*)"
+            helperText="➡️ If current url is matched, auto-replace is skipped. / glob patterns, one per line. (ex. https://*.example.com/*)"
+            onChange={handleOnChange}
           />
         </Box>
         {/* Add Some links */}

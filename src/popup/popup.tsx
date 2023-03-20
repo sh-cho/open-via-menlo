@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
-  Typography,
   Switch,
   FormGroup,
   FormControlLabel,
-  Divider,
   FormHelperText,
   Button,
   Stack,

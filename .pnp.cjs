@@ -37,6 +37,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mui/material", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:5.11.13"],\
             ["@types/chrome", "npm:0.0.224"],\
             ["@types/jest", "npm:29.5.0"],\
+            ["@types/lodash", "npm:4.14.191"],\
+            ["@types/minimatch", "npm:5.1.2"],\
             ["@types/node", "npm:18.15.3"],\
             ["@types/react", "npm:18.0.28"],\
             ["@types/react-dom", "npm:18.0.11"],\
@@ -44,6 +46,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["copy-webpack-plugin", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:11.0.0"],\
             ["css-loader", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:6.7.3"],\
             ["html-webpack-plugin", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:5.5.0"],\
+            ["lodash", "npm:4.17.21"],\
+            ["minimatch", "npm:7.4.2"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:18.2.0"],\
             ["style-loader", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:3.3.2"],\
@@ -1350,6 +1354,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-json-schema-npm-7.0.11-79462ae5ca-527bddfe62.zip/node_modules/@types/json-schema/",\
           "packageDependencies": [\
             ["@types/json-schema", "npm:7.0.11"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/lodash", [\
+        ["npm:4.14.191", {\
+          "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.191-67a04a969b-ba0d5434e1.zip/node_modules/@types/lodash/",\
+          "packageDependencies": [\
+            ["@types/lodash", "npm:4.14.191"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3818,6 +3831,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["brace-expansion", "npm:2.0.1"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:7.4.2", {\
+          "packageLocation": "./.yarn/cache/minimatch-npm-7.4.2-da654284bf-9e341b04e6.zip/node_modules/minimatch/",\
+          "packageDependencies": [\
+            ["minimatch", "npm:7.4.2"],\
+            ["brace-expansion", "npm:2.0.1"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["minipass", [\
@@ -4067,6 +4088,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mui/material", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:5.11.13"],\
             ["@types/chrome", "npm:0.0.224"],\
             ["@types/jest", "npm:29.5.0"],\
+            ["@types/lodash", "npm:4.14.191"],\
+            ["@types/minimatch", "npm:5.1.2"],\
             ["@types/node", "npm:18.15.3"],\
             ["@types/react", "npm:18.0.28"],\
             ["@types/react-dom", "npm:18.0.11"],\
@@ -4074,6 +4097,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["copy-webpack-plugin", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:11.0.0"],\
             ["css-loader", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:6.7.3"],\
             ["html-webpack-plugin", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:5.5.0"],\
+            ["lodash", "npm:4.17.21"],\
+            ["minimatch", "npm:7.4.2"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:18.2.0"],\
             ["style-loader", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:3.3.2"],\

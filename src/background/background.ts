@@ -3,6 +3,7 @@ import { constants } from "../utils/constants";
 chrome.runtime.onInstalled.addListener(() => {
   // set "autoReplace" to false by default
   chrome.storage.sync.set({ autoReplace: false });
+  chrome.storage.sync.set({ excludeUrlPatterns: [] });
 
   chrome.contextMenus.create({
     id: "open-via-menlo",

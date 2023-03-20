@@ -997,7 +997,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/minimatch@npm:*":
+"@types/lodash@npm:^4.14.191":
+  version: 4.14.191
+  resolution: "@types/lodash@npm:4.14.191"
+  checksum: ba0d5434e10690869f32d5ea49095250157cae502f10d57de0a723fd72229ce6c6a4979576f0f13e0aa9fbe3ce2457bfb9fa7d4ec3d6daba56730a51906d1491
+  languageName: node
+  linkType: hard
+
+"@types/minimatch@npm:*, @types/minimatch@npm:^5.1.2":
   version: 5.1.2
   resolution: "@types/minimatch@npm:5.1.2"
   checksum: 0391a282860c7cb6fe262c12b99564732401bdaa5e395bee9ca323c312c1a0f45efbf34dce974682036e857db59a5c9b1da522f3d6055aeead7097264c8705a8
@@ -3055,6 +3062,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minimatch@npm:^7.4.2":
+  version: 7.4.2
+  resolution: "minimatch@npm:7.4.2"
+  dependencies:
+    brace-expansion: ^2.0.1
+  checksum: 9e341b04e69d5ab03e4206dcb61c8a158e3b8709628bf5e1a4eaa9f3b72c0ba925e24ad959b1f6ce6835caa5a927131d5087fae6836b69e7d99d7d5e63ef0bd8
+  languageName: node
+  linkType: hard
+
 "minipass-collect@npm:^1.0.2":
   version: 1.0.2
   resolution: "minipass-collect@npm:1.0.2"
@@ -3283,6 +3299,8 @@ __metadata:
     "@mui/material": ^5.11.13
     "@types/chrome": ^0.0.224
     "@types/jest": ^29.5.0
+    "@types/lodash": ^4.14.191
+    "@types/minimatch": ^5.1.2
     "@types/node": ^18.15.3
     "@types/react": ^18.0.28
     "@types/react-dom": ^18.0.11
@@ -3290,6 +3308,8 @@ __metadata:
     copy-webpack-plugin: ^11.0.0
     css-loader: ^6.7.3
     html-webpack-plugin: ^5.5.0
+    lodash: ^4.17.21
+    minimatch: ^7.4.2
     react: ^18.2.0
     react-dom: ^18.2.0
     style-loader: ^3.3.2
