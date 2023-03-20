@@ -1,3 +1,5 @@
+import { constants } from '../utils/constants';
+
 chrome.storage.sync.get("autoReplace").then((result) => {
   console.log("🔎 Checking autoReplace setting", result);
 
@@ -7,8 +9,6 @@ chrome.storage.sync.get("autoReplace").then((result) => {
 
   prependAllLinks();
 });
-
-const MENLO_URL = "https://safe.menlosecurity.com";
 
 function prependAllLinks() {
   // Get all anchor tags on the page
@@ -20,15 +20,15 @@ function prependAllLinks() {
     if (
       !href ||
       href.startsWith("#") ||
-      href.startsWith(MENLO_URL) ||
+      href.startsWith(constants.MENLO_URL) ||
       href.startsWith("mailto:")
     ) {
       continue;
     }
 
     const newHref = href.startsWith("/")
-      ? `${MENLO_URL}${href}`
-      : `${MENLO_URL}/${href}`;
+      ? `${constants.MENLO_URL}${href}`
+      : `${constants.MENLO_URL}/${href}`;
 
     links[i].setAttribute("href", newHref);
   }

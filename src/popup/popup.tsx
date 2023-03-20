@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { Typography, Switch, FormGroup, FormControlLabel } from "@mui/material";
+import {
+  Typography,
+  Switch,
+  FormGroup,
+  FormControlLabel,
+  Divider,
+  FormHelperText,
+  Button,
+  Stack,
+  Box,
+} from "@mui/material";
+import SettingsIcon from "@mui/icons-material/Settings";
 import "./popup.css";
 
 const App: React.FC<{}> = () => {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     chrome.storage.sync
@@ -15,15 +26,18 @@ const App: React.FC<{}> = () => {
       })
       .catch((error) => {
         console.log(`💬 autoReplace get error: ${error}`);
-        chrome.storage.sync.set({ autoReplace: true });
-        setChecked(true);
+        chrome.storage.sync.set({ autoReplace: false });
+        chrome.action.setBadgeText({ text: "" });
+        setChecked(false);
       });
   }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(`💬 autoReplace set: ${event.target.checked}`);
-    chrome.storage.sync.set({ autoReplace: event.target.checked });
-    setChecked(event.target.checked);
+    const checked = event.target.checked;
+    console.log(`💬 autoReplace set: ${checked}`);
+    chrome.storage.sync.set({ autoReplace: checked });
+    chrome.action.setBadgeText({ text: checked ? "ON" : "" });
+    setChecked(checked);
   };
 
   const clearStorage = () => {
@@ -32,19 +46,35 @@ const App: React.FC<{}> = () => {
   };
 
   return (
-    <FormGroup>
-      <FormControlLabel
-        control={<Switch checked={checked} onChange={handleChange} />}
-        label="(Experimental) Automatically replace all links"
-      />
-      <Typography variant="subtitle1" align="right">
-        ⚠️ Note: Refresh page after change
-      </Typography>
-
-      {/* <Button variant="outlined" onClick={clearStorage}>
-        DEBUG - clear storage
-      </Button> */}
-    </FormGroup>
+    <Box>
+      <FormGroup>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={checked}
+              onChange={handleChange}
+              aria-describedby="switch-helper-text"
+            />
+          }
+          label="Automatically replace all links"
+        />
+        <FormHelperText id="switch-helper-text">
+          ⚠️ Experimental. Refresh page after change.
+        </FormHelperText>
+      </FormGroup>
+      <Stack direction="row" justifyContent="end">
+        <Button
+          variant="outlined"
+          size="small"
+          startIcon={<SettingsIcon />}
+          onClick={() => {
+            chrome.runtime.openOptionsPage();
+          }}
+        >
+          Options
+        </Button>
+      </Stack>
+    </Box>
   );
 };
 

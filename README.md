@@ -2,7 +2,7 @@
 
 [![image](https://user-images.githubusercontent.com/11611397/216783062-5f9b5b39-e3d7-48d7-b191-ac1ddc0a325c.png)](https://chrome.google.com/webstore/detail/open-via-menlo/noipifnjlcnmakealjopkndknloofcka)
 
-Browser extension that adds context menu that makes webpage links to be opened via [Menlo Security](https://safe.menlosecurity.com/).
+Open links via [Menlo Security](https://safe.menlosecurity.com/).
 
 (Only supports chrome, for now)
 
@@ -51,17 +51,26 @@ TODO: build workflow
 ## Todo
 - [x] use [chrome-types](https://www.npmjs.com/package/chrome-types)
 - [x] auto-redirect all links
+- [x] change icons based on on/off setting
+- [ ] opt-out URLs (just like no-proxy)
+- [ ] add menlo -> normal page context menu
+- [ ] add test
 - [ ] multi browser support
   - firefox
   - safari
 - [ ] build workflows
+- [ ] change dev icon / name
 
 ### references
-- Chrome extension docs
-  - MV3: https://developer.chrome.com/docs/extensions/mv3/
-  - API Reference: https://developer.chrome.com/docs/extensions/reference/
-    - chrome.storage: https://developer.chrome.com/docs/extensions/reference/storage/
+#### api docs
+- MV3: https://developer.chrome.com/docs/extensions/mv3/
+- API Reference: https://developer.chrome.com/docs/extensions/reference/
+  - chrome.storage: https://developer.chrome.com/docs/extensions/reference/storage/
+  - chrome.action: https://developer.chrome.com/docs/extensions/reference/action/
+
+#### codes
 - react chrome-extension boilerplate: https://github.com/JasonXian/react-chrome-extension-boilerplate
+- bitwarden browser extensions: https://github.com/bitwarden/clients/tree/master/apps/browser
 
 #### 참고자료
 - yarn setup: https://haranglog.tistory.com/28
