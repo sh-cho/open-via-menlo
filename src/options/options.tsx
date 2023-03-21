@@ -11,12 +11,12 @@ import {
 import _ from "lodash";
 
 const handleOnChange = _.debounce(
-  (event: React.ChangeEvent<HTMLInputElement>) => {
+  async (event: React.ChangeEvent<HTMLInputElement>) => {
     const patterns = event.target.value
       .split("\n")
       .filter((pattern) => pattern.length > 0);
     console.log(`💬 excludeUrlPatterns set: ${patterns}`);
-    chrome.storage.sync.set({ excludeUrlPatterns: patterns });
+    await chrome.storage.sync.set({ excludeUrlPatterns: patterns });
   },
   250
 );

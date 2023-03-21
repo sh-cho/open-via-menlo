@@ -16,18 +16,21 @@ const App: React.FC<{}> = () => {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    chrome.storage.sync
-      .get("autoReplace")
-      .then((result) => {
-        console.log(`💬 autoReplace get: ${result.autoReplace}`);
-        setChecked(result.autoReplace);
-      })
-      .catch((error) => {
-        console.log(`💬 autoReplace get error: ${error}`);
-        chrome.storage.sync.set({ autoReplace: false });
-        chrome.action.setBadgeText({ text: "" });
+    (async () => {
+      try {
+        const { autoReplace } = await chrome.storage.sync.get("autoReplace");
+        console.log(`💬 autoReplace get: ${autoReplace}`);
+        setChecked(autoReplace);
+      } catch (e) {
+        console.log(`💬 autoReplace get error: ${e}`);
+        await Promise.all([
+          chrome.storage.sync.set({ autoReplace: false }),
+          chrome.action.setBadgeText({ text: "" }),
+        ]);
+
         setChecked(false);
-      });
+      }
+    })();
   }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
