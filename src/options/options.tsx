@@ -69,7 +69,7 @@ const App: React.FC<{}> = () => {
             fullWidth
             multiline
             minRows={4}
-            helperText="➡️ If URL of current tab matches for any pattern, auto-replace is disabled. / glob patterns, one per line. (ex. http?://*.google.com/*)"
+            helperText="➡️ If URL of current tab matches for any pattern, auto-replace is disabled. / glob patterns, one per line. / ex. http?://*.kakaocorp.com/*"
             value={excludeUrlPatterns}
             onChange={handleChange}
           />
