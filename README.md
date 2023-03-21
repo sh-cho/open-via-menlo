@@ -2,6 +2,9 @@
 
 [![image](https://user-images.githubusercontent.com/11611397/216783062-5f9b5b39-e3d7-48d7-b191-ac1ddc0a325c.png)](https://chrome.google.com/webstore/detail/open-via-menlo/noipifnjlcnmakealjopkndknloofcka)
 
+[![Chrome Web Store Ratings](https://img.shields.io/chrome-web-store/rating/noipifnjlcnmakealjopkndknloofcka)](https://chrome.google.com/webstore/detail/open-via-menlo/noipifnjlcnmakealjopkndknloofcka)
+[![Chrome Web Store Downloads](https://img.shields.io/chrome-web-store/users/noipifnjlcnmakealjopkndknloofcka)](https://chrome.google.com/webstore/detail/open-via-menlo/noipifnjlcnmakealjopkndknloofcka)
+
 Open links via [Menlo Security](https://safe.menlosecurity.com/).
 
 (Only supports chrome, for now)
@@ -32,7 +35,7 @@ yarn dlx @yarnpkg/sdks vscode
 ```
 Install [zipfs](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) vscode extension
 
-And configure editor sdk (<kbd>cmd</kbd>+<kbd>shift</kbd>+<kbd>p</kbd> -> `Use Workspace Version (.yarn/sdks/typescript/lib)`)
+And configure editor sdk (<kbd>cmd</kbd>+<kbd>shift</kbd>+<kbd>p</kbd> -> `Select Typescript Version` -> `Use Workspace Version (.yarn/sdks/typescript/lib)`)
 
 ```sh
 yarn plugin import typescript
