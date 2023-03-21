@@ -64,6 +64,7 @@ TODO: build workflow
 ### references
 #### api docs
 - MV3: https://developer.chrome.com/docs/extensions/mv3/
+  - Message passing: https://developer.chrome.com/docs/extensions/mv3/messaging/
 - API Reference: https://developer.chrome.com/docs/extensions/reference/
   - chrome.storage: https://developer.chrome.com/docs/extensions/reference/storage/
   - chrome.action: https://developer.chrome.com/docs/extensions/reference/action/

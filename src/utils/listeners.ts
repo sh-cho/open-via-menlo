@@ -31,11 +31,3 @@ export const onClickedListener = async (
     chrome.tabs.create({ url: newUrl });
   }
 };
-
-// export const updateBadgeText = async (
-//   activeInfo: chrome.tabs.TabActiveInfo
-// ) => {
-//   await updateBadgeText0(activeInfo.tabId);
-// };
-
-

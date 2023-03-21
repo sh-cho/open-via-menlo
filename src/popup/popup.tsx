@@ -10,6 +10,7 @@ import {
   Box,
 } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
+import { updateBadgeText } from "../utils/helpers";
 import "./popup.css";
 
 const App: React.FC<{}> = () => {
@@ -19,13 +20,13 @@ const App: React.FC<{}> = () => {
     (async () => {
       try {
         const { autoReplace } = await chrome.storage.sync.get("autoReplace");
-        console.log(`💬 autoReplace get: ${autoReplace}`);
+        console.log(`🎈 autoReplace get: ${autoReplace}`);
         setChecked(autoReplace);
       } catch (e) {
-        console.log(`💬 autoReplace get error: ${e}`);
+        console.log(`🎈 autoReplace get error: ${e}`);
         await Promise.all([
           chrome.storage.sync.set({ autoReplace: false }),
-          chrome.action.setBadgeText({ text: "" }),
+          updateBadgeText(window.location.href, false),
         ]);
 
         setChecked(false);
@@ -33,16 +34,35 @@ const App: React.FC<{}> = () => {
     })();
   }, []);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const checked = event.target.checked;
-    console.log(`💬 autoReplace set: ${checked}`);
-    chrome.storage.sync.set({ autoReplace: checked });
-    chrome.action.setBadgeText({ text: checked ? "ON" : "" });
+    console.log(`🎈 autoReplace set: ${checked}`);
+
+    await chrome.storage.sync.set({ autoReplace: checked });
+    const activeTabs: chrome.tabs.Tab[] = await chrome.tabs.query({
+      active: true,
+      lastFocusedWindow: true,
+    }); // active: 열린 탭
+
+    console.log(`🎈 activeTabs: ${JSON.stringify(activeTabs)}`);
+
+    // TODO: multiple windows ..
+    const tab = activeTabs[0];
+    if (!tab.url || !tab.id || !tab.url.match(String.raw`https?://*`)) {
+      return;
+    }
+
+    // XXX: how can I send with chrome.tabs.sendMessage? I think this is the problem
+    await chrome.runtime.sendMessage({
+      url: tab.url,
+      on: checked,
+    });
+
     setChecked(checked);
   };
 
   const clearStorage = () => {
-    console.log(`💬 clear storage`);
+    console.log(`🎈 clear storage`);
     chrome.storage.sync.clear();
   };
 

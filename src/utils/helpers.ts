@@ -23,10 +23,12 @@ export const prependAllLinks = async (): Promise<void> => {
 
     links[i].setAttribute("href", newHref);
   }
-}
+};
 
 export const isExcluded = async (url: string): Promise<boolean> => {
-  const { excludeUrlPatterns } = await chrome.storage.sync.get("excludeUrlPatterns");
+  const { excludeUrlPatterns } = await chrome.storage.sync.get(
+    "excludeUrlPatterns"
+  );
   if (!excludeUrlPatterns || excludeUrlPatterns.length === 0) {
     return false;
   }
@@ -38,16 +40,19 @@ export const isExcluded = async (url: string): Promise<boolean> => {
   }
 
   return false;
-}
+};
 
-export const updateBadgeText = async (url: string) => {
-  /// XXX: how to use tabId?
-  const excluded = await isExcluded(url);
-  if (excluded) {
-    await chrome.action.setBadgeText({ text: "Skip" });
-    return;
-  }
+export const updateBadgeTextOnTabActions = async (currentTabUrl: string) => {
+  console.log("🔎 Updating badge text on tab actions", currentTabUrl);
 
   const { autoReplace } = await chrome.storage.sync.get("autoReplace");
-  await chrome.action.setBadgeText({ text: autoReplace ? "ON" : "" });
+  await updateBadgeText(currentTabUrl, autoReplace);
+};
+
+export const updateBadgeText = async (currentTabUrl: string, on: boolean) => {
+  console.log("🔎 Updating badge text", currentTabUrl, on);
+
+  const excluded = await isExcluded(currentTabUrl);
+  const text = on ? (excluded ? "Skip" : "ON") : "";
+  await chrome.action.setBadgeText({ text });
 };
