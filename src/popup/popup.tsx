@@ -39,26 +39,30 @@ const App: React.FC<{}> = () => {
     console.log(`🎈 autoReplace set: ${checked}`);
 
     await chrome.storage.sync.set({ autoReplace: checked });
-    const activeTabs: chrome.tabs.Tab[] = await chrome.tabs.query({
-      active: true,
-      lastFocusedWindow: true,
-    }); // active: 열린 탭
-
-    console.log(`🎈 activeTabs: ${JSON.stringify(activeTabs)}`);
-
-    // TODO: multiple windows ..
-    const tab = activeTabs[0];
-    if (!tab.url || !tab.id || !tab.url.match(String.raw`https?://*`)) {
-      return;
-    }
-
-    // XXX: how can I send with chrome.tabs.sendMessage? I think this is the problem
-    await chrome.runtime.sendMessage({
-      url: tab.url,
-      on: checked,
-    });
-
     setChecked(checked);
+
+    try {
+      const activeTabs: chrome.tabs.Tab[] = await chrome.tabs.query({
+        active: true,
+        lastFocusedWindow: true,
+      }); // active: 열린 탭
+
+      console.log(`🎈 activeTabs: ${JSON.stringify(activeTabs)}`);
+
+      // TODO: multiple windows ..
+      const tab = activeTabs[0];
+      if (!tab.url || !tab.id || !tab.url.match(String.raw`https?://*`)) {
+        return;
+      }
+
+      // XXX: how can I send with chrome.tabs.sendMessage? I think this is the problem
+      await chrome.runtime.sendMessage({
+        url: tab.url,
+        on: checked,
+      });
+    } catch (e) {
+      console.log(`🎈 sendMessage error: ${e}`);
+    }
   };
 
   const clearStorage = () => {

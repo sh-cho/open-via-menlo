@@ -12,11 +12,14 @@ export const prependAllLinks = async (): Promise<void> => {
       !href ||
       href.startsWith("#") ||
       href.startsWith(constants.MENLO_URL) ||
-      href.startsWith("mailto:")
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:") ||
+      href.startsWith("javascript:")
     ) {
       continue;
     }
 
+    // TODO: enhance replace rules
     const newHref = href.startsWith("/")
       ? `${constants.MENLO_URL}${href}`
       : `${constants.MENLO_URL}/${href}`;
@@ -26,20 +29,26 @@ export const prependAllLinks = async (): Promise<void> => {
 };
 
 export const isExcluded = async (url: string): Promise<boolean> => {
-  const { excludeUrlPatterns } = await chrome.storage.sync.get(
-    "excludeUrlPatterns"
-  );
-  if (!excludeUrlPatterns || excludeUrlPatterns.length === 0) {
+  try {
+    const { excludeUrlPatterns } = await chrome.storage.sync.get(
+      "excludeUrlPatterns"
+    );
+    if (!excludeUrlPatterns || excludeUrlPatterns.length === 0) {
+      return false;
+    }
+
+    for (const pattern of excludeUrlPatterns) {
+      if (minimatch(url, pattern)) {
+        return true;
+      }
+    }
+
+    return false;
+  } catch (e) {
+    console.error("🔴 [isExcluded]", e);
+
     return false;
   }
-
-  for (const pattern of excludeUrlPatterns) {
-    if (minimatch(url, pattern)) {
-      return true;
-    }
-  }
-
-  return false;
 };
 
 export const updateBadgeTextOnTabActions = async (currentTabUrl: string) => {
@@ -53,6 +62,8 @@ export const updateBadgeText = async (currentTabUrl: string, on: boolean) => {
   console.log("🔎 Updating badge text", currentTabUrl, on);
 
   const excluded = await isExcluded(currentTabUrl);
-  const text = on ? (excluded ? "Skip" : "ON") : "";
+  const text = on ? (excluded ? "X" : "ON") : "";
+  const bgColor = excluded ? "#CCCCCC" : "#3266E3";
   await chrome.action.setBadgeText({ text });
+  await chrome.action.setBadgeBackgroundColor({ color: bgColor });
 };

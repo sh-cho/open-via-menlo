@@ -65,11 +65,11 @@ const App: React.FC<{}> = () => {
         <Box component="form" noValidate autoComplete="off">
           <TextField
             id="exclude-url-patterns"
-            label="(Optional) Exclude URL patterns"
+            label="(Optional) Auto-replace Exclude URL patterns (glob)"
             fullWidth
             multiline
             minRows={4}
-            helperText="➡️ If current url is matched, auto-replace is skipped. / glob patterns, one per line. (ex. https://*.example.com/*)"
+            helperText="➡️ If current tab's url is matched to any pattern, auto-replace is disabled. / glob patterns, one per line. (ex. http?://*.example.com/*)"
             value={excludeUrlPatterns}
             onChange={handleChange}
           />
