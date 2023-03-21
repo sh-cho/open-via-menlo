@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Open via Menlo (dev)",
+  "name": "Open via Menlo",
   "description": "Open links via Menlo Security",
   "version": "1.1",
   "permissions": ["contextMenus", "storage", "tabs"],
