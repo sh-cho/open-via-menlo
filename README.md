@@ -6,6 +6,13 @@ Open links via [Menlo Security](https://safe.menlosecurity.com/).
 
 (Only supports chrome, for now)
 
+> **Warn**
+>
+> Known issue: Badges are not working correctly (only displaying incorrectly).
+> To be precise, all open Chrome windows are sharing a single badge.
+>
+> Will be fixed.
+
 ## Development
 ### Install
 
