@@ -22,6 +22,7 @@ Open links via [Menlo Security](https://safe.menlosecurity.com/).
 > - Badges are not working correctly (only displaying incorrectly).
 > To be precise, all open Chrome windows are sharing a single badge.
 > - In chrome tabs, extension is not working well (ex. `chrome://extensions`, ...)
+> - In general, the code is messy 😞. I'm trying to learn JS
 
 ## Development
 ### Install
