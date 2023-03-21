@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { createRoot } from "react-dom/client";
 import {
   AppBar,
@@ -10,18 +10,42 @@ import {
 } from "@mui/material";
 import _ from "lodash";
 
-const handleOnChange = _.debounce(
-  async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const patterns = event.target.value
-      .split("\n")
-      .filter((pattern) => pattern.length > 0);
-    console.log(`💬 excludeUrlPatterns set: ${patterns}`);
-    await chrome.storage.sync.set({ excludeUrlPatterns: patterns });
-  },
-  250
-);
-
 const App: React.FC<{}> = () => {
+  const [excludeUrlPatterns, setExcludeUrlPatterns] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { excludeUrlPatterns } = await chrome.storage.sync.get(
+          "excludeUrlPatterns"
+        );
+        console.log(`#️⃣ excludeUrlPatterns get: ${excludeUrlPatterns}`);
+        setExcludeUrlPatterns(excludeUrlPatterns.join("\n"));
+      } catch (e) {
+        console.log(`#️⃣ excludeUrlPatterns get error: ${e}`);
+        await chrome.storage.sync.set({ excludeUrlPatterns: "" });
+        setExcludeUrlPatterns("");
+      }
+    })();
+  }, []);
+
+  const saveToStorage = _.debounce(async (_val: string) => {
+    const patterns = _val.split("\n").filter((pattern) => pattern.length > 0);
+    console.log(`#️⃣ excludeUrlPatterns set: ${patterns}`);
+    await chrome.storage.sync.set({ excludeUrlPatterns: patterns });
+  }, 250);
+
+  // XXX: why this is working ?
+  const debouceRequest = useCallback(
+    (value: string) => saveToStorage(value),
+    []
+  );
+
+  const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    debouceRequest(event.target.value);
+    setExcludeUrlPatterns(event.target.value);
+  };
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -46,7 +70,8 @@ const App: React.FC<{}> = () => {
             multiline
             minRows={4}
             helperText="➡️ If current url is matched, auto-replace is skipped. / glob patterns, one per line. (ex. https://*.example.com/*)"
-            onChange={handleOnChange}
+            value={excludeUrlPatterns}
+            onChange={handleChange}
           />
         </Box>
         {/* Add Some links */}
