@@ -59,7 +59,7 @@ TODO: build workflow
 - [x] use [chrome-types](https://www.npmjs.com/package/chrome-types)
 - [x] auto-redirect all links
 - [x] change icons based on on/off setting
-- [ ] opt-out URLs (just like no-proxy)
+- [x] opt-out URLs (just like no-proxy)
 - [ ] add menlo -> normal page context menu
 - [ ] add test
 - [ ] multi browser support
@@ -67,6 +67,7 @@ TODO: build workflow
   - safari
 - [ ] build workflows
 - [ ] change dev icon / name
+- [ ] neatly print log..
 
 ### references
 #### api docs
