@@ -12,7 +12,7 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "React Extension",
+    "default_title": "open-via-menlo-extension",
     "default_icon": "icon-128.png"
   },
   "background": {
