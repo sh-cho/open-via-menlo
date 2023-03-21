@@ -62,7 +62,7 @@ TODO: build workflow
 - [x] opt-out URLs (just like no-proxy)
 - [ ] add menlo -> normal page context menu
 - [ ] add test
-- [ ] multi browser support
+- [ ] multi browser support (-> how to do it automatically?)
   - firefox
   - safari
 - [ ] build workflows
