@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { createRoot } from "react-dom/client";
+import React, { useEffect, useState, useCallback } from 'react';
+import { createRoot } from 'react-dom/client';
 import {
   AppBar,
   Box,
@@ -7,30 +7,30 @@ import {
   TextField,
   Toolbar,
   Typography,
-} from "@mui/material";
-import _ from "lodash";
+} from '@mui/material';
+import _ from 'lodash';
 
 const App: React.FC<{}> = () => {
-  const [excludeUrlPatterns, setExcludeUrlPatterns] = useState("");
+  const [excludeUrlPatterns, setExcludeUrlPatterns] = useState('');
 
   useEffect(() => {
     (async () => {
       try {
         const { excludeUrlPatterns } = await chrome.storage.sync.get(
-          "excludeUrlPatterns"
+          'excludeUrlPatterns'
         );
         console.log(`#️⃣ excludeUrlPatterns get: ${excludeUrlPatterns}`);
-        setExcludeUrlPatterns(excludeUrlPatterns.join("\n"));
+        setExcludeUrlPatterns(excludeUrlPatterns.join('\n'));
       } catch (e) {
         console.log(`#️⃣ excludeUrlPatterns get error: ${e}`);
-        await chrome.storage.sync.set({ excludeUrlPatterns: "" });
-        setExcludeUrlPatterns("");
+        await chrome.storage.sync.set({ excludeUrlPatterns: '' });
+        setExcludeUrlPatterns('');
       }
     })();
   }, []);
 
   const saveToStorage = _.debounce(async (_val: string) => {
-    const patterns = _val.split("\n").filter((pattern) => pattern.length > 0);
+    const patterns = _val.split('\n').filter((pattern) => pattern.length > 0);
     console.log(`#️⃣ excludeUrlPatterns set: ${patterns}`);
     await chrome.storage.sync.set({ excludeUrlPatterns: patterns });
   }, 250);
@@ -47,14 +47,14 @@ const App: React.FC<{}> = () => {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component="nav">
         <Toolbar>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { sm: "block" } }}
+            sx={{ flexGrow: 1, display: { sm: 'block' } }}
           >
             open-via-menlo option
           </Typography>
@@ -80,7 +80,7 @@ const App: React.FC<{}> = () => {
   );
 };
 
-const container = document.createElement("div");
+const container = document.createElement('div');
 document.body.appendChild(container);
 const root = createRoot(container);
 root.render(<App />);

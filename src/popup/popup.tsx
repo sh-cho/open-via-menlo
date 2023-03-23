@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { createRoot } from "react-dom/client";
+import React, { useEffect, useState } from 'react';
+import { createRoot } from 'react-dom/client';
 import {
   Switch,
   FormGroup,
@@ -8,10 +8,10 @@ import {
   Button,
   Stack,
   Box,
-} from "@mui/material";
-import SettingsIcon from "@mui/icons-material/Settings";
-import { updateBadgeText } from "../utils/helpers";
-import "./popup.css";
+} from '@mui/material';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { updateBadgeText } from '../utils/helpers';
+import './popup.css';
 
 const App: React.FC<{}> = () => {
   const [checked, setChecked] = useState(false);
@@ -19,7 +19,7 @@ const App: React.FC<{}> = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { autoReplace } = await chrome.storage.sync.get("autoReplace");
+        const { autoReplace } = await chrome.storage.sync.get('autoReplace');
         console.log(`🎈 autoReplace get: ${autoReplace}`);
         setChecked(autoReplace);
       } catch (e) {
@@ -103,7 +103,7 @@ const App: React.FC<{}> = () => {
   );
 };
 
-const container = document.createElement("div");
+const container = document.createElement('div');
 document.body.appendChild(container);
 const root = createRoot(container);
 root.render(<App />);
