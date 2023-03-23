@@ -27,3 +27,8 @@ jobs:
 
       - run: yarn format:check
       - run: yarn lint
+
+      - name: Webpack config test
+        run: |
+          yarn webpack configtest webpack.dev.js
+          yarn webpack configtest webpack.prod.js
