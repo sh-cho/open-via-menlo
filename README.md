@@ -17,37 +17,55 @@ Open links via [Menlo Security](https://safe.menlosecurity.com/).
 
 > **Note**
 >
-> Bugs (to-be fixed)
+> Bugs on v1.1 (to-be fixed)
 >
 > - Badges are not working correctly (only displaying incorrectly).
 > To be precise, all open Chrome windows are sharing a single badge.
 > - In chrome tabs, extension is not working well (ex. `chrome://extensions`, ...)
 > - In general, the code is messy 😞. I'm trying to learn JS
 
+## How to use
+
+(TBD)
+
 ## Development
+
+### Pre-requisite
+
+Use vscode and install extensions below (see [`/.vscode/extensions.json`](/.vscode/extensions.json))
+
+- [zipfs](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs)
+- [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
 ### Install
 
 ```sh
 brew install yarn
 ```
-install yarn (with brew or npm)
+1. install yarn (with brew or npm)
 
 ```sh
 yarn install
 ```
-Setup
+(You don't have to do this, because this project is using yarn berry zero-install)
 
 ```sh
 yarn dlx @yarnpkg/sdks vscode
 ```
-Install [zipfs](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) vscode extension
+(check this: https://yarnpkg.com/getting-started/editor-sdks)
 
-And configure editor sdk (<kbd>cmd</kbd>+<kbd>shift</kbd>+<kbd>p</kbd> -> `Select Typescript Version` -> `Use Workspace Version (.yarn/sdks/typescript/lib)`)
+2. Generate editor SDK for vscode.
+
+And configure editor sdk
+- (1) Open command palette with <kbd>⌘ cmd</kbd> + <kbd>⇧ shift</kbd> + <kbd>p</kbd> (Windows: <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd>)
+- (2) `Select Typescript Version`
+- (3) `Use Workspace Version (.yarn/sdks/typescript/lib)`
 
 ```sh
 yarn plugin import typescript
 ```
-Install [yarn typescript plugin](https://github.com/yarnpkg/berry/tree/master/packages/plugin-typescript)
+3. Install [yarn typescript plugin](https://github.com/yarnpkg/berry/tree/master/packages/plugin-typescript)
 
 ### Run locally
 ```
@@ -67,10 +85,6 @@ yarn build
 TODO: build workflow
 
 ## Todo
-- [x] use [chrome-types](https://www.npmjs.com/package/chrome-types)
-- [x] auto-redirect all links
-- [x] change icons based on on/off setting
-- [x] opt-out URLs (just like no-proxy)
 - [ ] add menlo -> normal page context menu
 - [ ] add test
 - [ ] multi browser support (-> how to do it automatically?)
@@ -81,7 +95,7 @@ TODO: build workflow
 - [ ] neatly print log..
 
 ### references
-#### api docs
+#### chrome api docs
 - MV3: https://developer.chrome.com/docs/extensions/mv3/
   - Message passing: https://developer.chrome.com/docs/extensions/mv3/messaging/
 - API Reference: https://developer.chrome.com/docs/extensions/reference/
