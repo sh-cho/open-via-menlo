@@ -102,6 +102,7 @@ TODO: build workflow
   - firefox
   - safari
 - [ ] build workflows
+- [ ] setup renovate
 - [ ] change dev icon / name
 - [ ] neatly print log..
 
