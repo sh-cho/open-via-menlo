@@ -6,7 +6,9 @@
   "private": true,
   "scripts": {
     "start": "webpack --watch --progress --config webpack.dev.js",
-    "build": "webpack --progress --config webpack.prod.js"
+    "build": "webpack --progress --config webpack.prod.js",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
@@ -25,11 +27,18 @@
     "@types/prettier": "^2",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
     "eslint": "^8.36.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "html-webpack-plugin": "^5.5.0",
     "lodash": "^4.17.21",
     "minimatch": "^7.4.2",
