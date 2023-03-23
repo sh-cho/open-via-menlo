@@ -7,6 +7,7 @@
 [![Chrome Web Store Downloads](https://img.shields.io/chrome-web-store/users/noipifnjlcnmakealjopkndknloofcka)](https://chrome.google.com/webstore/detail/open-via-menlo/noipifnjlcnmakealjopkndknloofcka)
 
 <!-- Dev badges -->
+[![Build](https://github.com/sh-cho/open-via-menlo/actions/workflows/build.yaml/badge.svg?branch=main&event=push)](https://github.com/sh-cho/open-via-menlo/actions/workflows/build.yaml)
 [![Lint](https://github.com/sh-cho/open-via-menlo/actions/workflows/lint.yaml/badge.svg?branch=main&event=push)](https://github.com/sh-cho/open-via-menlo/actions/workflows/lint.yaml)
 
 ---
