@@ -67,6 +67,17 @@ yarn plugin import typescript
 ```
 3. Install [yarn typescript plugin](https://github.com/yarnpkg/berry/tree/master/packages/plugin-typescript)
 
+#### Additional setup
+```sh
+git config --local blame.ignoreRevsFile .git-blame-ignore-revs
+```
+Set git blame ignore revs file
+
+```
+blame.ignorerevsfile=.git-blame-ignore-revs
+```
+You can check `blame.ignoreRevsFile` config with `git config --list --local`
+
 ### Run locally
 ```
 yarn start
