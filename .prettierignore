@@ -1,0 +1,14 @@
+# artifacts
+build
+coverage
+
+# installed modules
+.yarn
+
+# not controlled by me
+.pnp.*js
+.yarnrc.yml
+yarn.lock
+
+# no-need
+*.md
