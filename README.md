@@ -1,9 +1,13 @@
 # open-via-menlo
 
+<!-- Release badges -->
 [![Chrome Web Store Release Version](https://img.shields.io/chrome-web-store/v/noipifnjlcnmakealjopkndknloofcka)](https://chrome.google.com/webstore/detail/open-via-menlo/noipifnjlcnmakealjopkndknloofcka)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/sh-cho/open-via-menlo)
 [![Chrome Web Store Ratings](https://img.shields.io/chrome-web-store/rating/noipifnjlcnmakealjopkndknloofcka)](https://chrome.google.com/webstore/detail/open-via-menlo/noipifnjlcnmakealjopkndknloofcka)
 [![Chrome Web Store Downloads](https://img.shields.io/chrome-web-store/users/noipifnjlcnmakealjopkndknloofcka)](https://chrome.google.com/webstore/detail/open-via-menlo/noipifnjlcnmakealjopkndknloofcka)
+
+<!-- Dev badges -->
+[![Lint](https://github.com/sh-cho/open-via-menlo/actions/workflows/lint.yaml/badge.svg?branch=main&event=push)](https://github.com/sh-cho/open-via-menlo/actions/workflows/lint.yaml)
 
 ---
 
