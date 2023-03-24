@@ -1,5 +1,6 @@
-import { constants } from './constants';
 import minimatch from 'minimatch';
+
+import { constants } from './constants';
 
 export const prependAllLinks = async (): Promise<void> => {
   // Get all anchor tags on the page
@@ -31,7 +32,7 @@ export const prependAllLinks = async (): Promise<void> => {
 export const isExcluded = async (url: string): Promise<boolean> => {
   try {
     const { excludeUrlPatterns } = await chrome.storage.sync.get(
-      'excludeUrlPatterns'
+      'excludeUrlPatterns',
     );
     if (!excludeUrlPatterns || excludeUrlPatterns.length === 0) {
       return false;

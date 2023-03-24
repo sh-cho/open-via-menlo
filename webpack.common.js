@@ -1,8 +1,8 @@
 const path = require('path');
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -65,6 +65,6 @@ function getHtmlPlugins(chunks) {
         title: 'React Extension',
         filename: `${chunk}.html`,
         chunks: [chunk],
-      })
+      }),
   );
 }

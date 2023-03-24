@@ -1,4 +1,4 @@
-import { isExcluded, prependAllLinks } from '../utils/helpers';
+import { isExcluded, prependAllLinks } from '~/utils/helpers';
 
 /// XXX: is this the right way to do this?
 (async () => {

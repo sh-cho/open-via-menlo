@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import { updateBadgeText } from '~/utils/helpers';
+
+import SettingsIcon from '@mui/icons-material/Settings';
 import {
   Switch,
   FormGroup,
@@ -9,8 +10,9 @@ import {
   Stack,
   Box,
 } from '@mui/material';
-import SettingsIcon from '@mui/icons-material/Settings';
-import { updateBadgeText } from '../utils/helpers';
+import React, { useEffect, useState } from 'react';
+import { createRoot } from 'react-dom/client';
+
 import './popup.css';
 
 const App: React.FC<{}> = () => {
@@ -35,7 +37,7 @@ const App: React.FC<{}> = () => {
   }, []);
 
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const checked = event.target.checked;
+    const { checked } = event.target;
     console.log(`🎈 autoReplace set: ${checked}`);
 
     await chrome.storage.sync.set({ autoReplace: checked });

@@ -14,7 +14,11 @@
     "resolveJsonModule": true,
     "noEmit": false,
     "jsx": "react-jsx",
-    "types": ["node", "react", "react-dom", "jest", "chrome"]
+    "types": ["node", "react", "react-dom", "jest", "chrome"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["build", "node_modules"]

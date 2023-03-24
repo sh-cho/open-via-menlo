@@ -8,8 +8,6 @@ const setDefaultStorage = async () => {
   ]);
 };
 
-/*******************************************************************************
- ******************************************************************************/
 export const onInstalledListener = async () => {
   setDefaultStorage();
 
@@ -23,7 +21,7 @@ export const onInstalledListener = async () => {
 };
 
 export const onClickedListener = async (
-  data: chrome.contextMenus.OnClickData
+  data: chrome.contextMenus.OnClickData,
 ) => {
   if (data.menuItemId === 'open-via-menlo') {
     const newUrl = `${constants.MENLO_URL}/${data.linkUrl || data.pageUrl}`;

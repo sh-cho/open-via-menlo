@@ -1,5 +1,3 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { createRoot } from 'react-dom/client';
 import {
   AppBar,
   Box,
@@ -9,6 +7,8 @@ import {
   Typography,
 } from '@mui/material';
 import _ from 'lodash';
+import React, { useEffect, useState, useCallback } from 'react';
+import { createRoot } from 'react-dom/client';
 
 const App: React.FC<{}> = () => {
   const [excludeUrlPatterns, setExcludeUrlPatterns] = useState('');
@@ -17,7 +17,7 @@ const App: React.FC<{}> = () => {
     (async () => {
       try {
         const { excludeUrlPatterns } = await chrome.storage.sync.get(
-          'excludeUrlPatterns'
+          'excludeUrlPatterns',
         );
         console.log(`#️⃣ excludeUrlPatterns get: ${excludeUrlPatterns}`);
         setExcludeUrlPatterns(excludeUrlPatterns.join('\n'));
@@ -38,7 +38,7 @@ const App: React.FC<{}> = () => {
   // XXX: why this is working ?
   const debouceRequest = useCallback(
     (value: string) => saveToStorage(value),
-    []
+    [],
   );
 
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
