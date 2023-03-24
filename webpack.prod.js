@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires, import/extensions */
 const TerserPlugin = require('terser-webpack-plugin');
 const { merge } = require('webpack-merge');
 
