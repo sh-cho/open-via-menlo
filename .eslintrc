@@ -13,6 +13,7 @@
     "webextensions": true
   },
   "rules": {
+    "no-console": "off",
     "import/prefer-default-export": "off",
     "import/order": [
       "error",
