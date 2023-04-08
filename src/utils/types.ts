@@ -4,4 +4,4 @@ export type MyState = {
   revision: number;
   autoReplace: boolean;
   excludeUrlPatterns: string[];
-}
+};
