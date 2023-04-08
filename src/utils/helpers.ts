@@ -11,11 +11,8 @@ export const prependAllLinks = async (): Promise<void> => {
     const href = links[i].getAttribute('href');
     if (
       !href ||
-      href.startsWith('#') ||
       href.startsWith(constants.MENLO_URL) ||
-      href.startsWith('mailto:') ||
-      href.startsWith('tel:') ||
-      href.startsWith('javascript:')
+      constants.BLACKLISTED_PREFIXES.some((prefix) => href.startsWith(prefix))
     ) {
       continue;
     }
