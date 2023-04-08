@@ -13,7 +13,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
 
 const App: React.FC<EmptyProps> = () => {
-  const [excludeUrlPatterns, setExcludeUrlPatterns] = useState('');
+  const [_excludeUrlPatterns, setExcludeUrlPatterns] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -72,7 +72,7 @@ const App: React.FC<EmptyProps> = () => {
             multiline
             minRows={4}
             helperText="➡️ If URL of current tab matches for any pattern, auto-replace is disabled. / glob patterns, one per line. / ex. http?://*.kakaocorp.com/*"
-            value={excludeUrlPatterns}
+            value={_excludeUrlPatterns}
             onChange={handleChange}
           />
         </Box>
