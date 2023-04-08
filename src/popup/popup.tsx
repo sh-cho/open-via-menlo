@@ -1,4 +1,4 @@
-import { updateBadgeText } from '~/utils/helpers';
+import { EmptyProps, updateBadgeText } from '~/utils/helpers';
 
 import SettingsIcon from '@mui/icons-material/Settings';
 import {
@@ -15,7 +15,8 @@ import { createRoot } from 'react-dom/client';
 
 import './popup.css';
 
-const App: React.FC<{}> = () => {
+
+const App: React.FC<EmptyProps> = () => {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {

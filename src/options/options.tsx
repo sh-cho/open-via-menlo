@@ -1,3 +1,5 @@
+import { EmptyProps } from '~/utils/helpers';
+
 import {
   AppBar,
   Box,
@@ -10,7 +12,7 @@ import _ from 'lodash';
 import React, { useEffect, useState, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
 
-const App: React.FC<{}> = () => {
+const App: React.FC<EmptyProps> = () => {
   const [excludeUrlPatterns, setExcludeUrlPatterns] = useState('');
 
   useEffect(() => {

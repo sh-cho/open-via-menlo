@@ -2,6 +2,8 @@ import minimatch from 'minimatch';
 
 import { constants } from './constants';
 
+export type EmptyProps = Record<string, never>;
+
 export const prependAllLinks = async (): Promise<void> => {
   // Get all anchor tags on the page
   const links = document.getElementsByTagName('a');
