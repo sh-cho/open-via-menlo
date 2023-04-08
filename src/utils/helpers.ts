@@ -44,13 +44,6 @@ export const isExcluded = async (url: string): Promise<boolean> => {
   }
 };
 
-export const updateBadgeTextOnTabActions = async (currentTabUrl: string) => {
-  console.log('🔎 Updating badge text on tab actions', currentTabUrl);
-
-  const { autoReplace } = await chrome.storage.sync.get('autoReplace');
-  await updateBadgeText(currentTabUrl, autoReplace);
-};
-
 export const updateBadgeText = async (currentTabUrl: string, on: boolean) => {
   console.log('🔎 Updating badge text', currentTabUrl, on);
 
@@ -59,4 +52,11 @@ export const updateBadgeText = async (currentTabUrl: string, on: boolean) => {
   const bgColor = excluded ? '#CCCCCC' : '#3266E3';
   await chrome.action.setBadgeText({ text });
   await chrome.action.setBadgeBackgroundColor({ color: bgColor });
+};
+
+export const updateBadgeTextOnTabActions = async (currentTabUrl: string) => {
+  console.log('🔎 Updating badge text on tab actions', currentTabUrl);
+
+  const { autoReplace } = await chrome.storage.sync.get('autoReplace');
+  await updateBadgeText(currentTabUrl, autoReplace);
 };
