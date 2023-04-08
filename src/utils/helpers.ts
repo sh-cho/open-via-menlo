@@ -2,8 +2,6 @@ import minimatch from 'minimatch';
 
 import { constants } from './constants';
 
-export type EmptyProps = Record<string, never>;
-
 export const prependAllLinks = async (): Promise<void> => {
   // Get all anchor tags on the page
   const links = document.getElementsByTagName('a');
@@ -33,20 +31,15 @@ export const prependAllLinks = async (): Promise<void> => {
 
 export const isExcluded = async (url: string): Promise<boolean> => {
   try {
-    const { excludeUrlPatterns } = await chrome.storage.sync.get(
-      'excludeUrlPatterns',
-    );
+    const excludeUrlPatterns = (
+      await chrome.storage.sync.get('excludeUrlPatterns')
+    ).excludeUrlPatterns as string[];
+
     if (!excludeUrlPatterns || excludeUrlPatterns.length === 0) {
       return false;
     }
 
-    for (const pattern of excludeUrlPatterns) {
-      if (minimatch(url, pattern)) {
-        return true;
-      }
-    }
-
-    return false;
+    return excludeUrlPatterns.some((pattern) => minimatch(url, pattern));
   } catch (e) {
     console.error('🔴 [isExcluded]', e);
 

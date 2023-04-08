@@ -1,4 +1,4 @@
-import { EmptyProps } from '~/utils/helpers';
+import { EmptyProps } from '~/utils/types';
 
 import {
   AppBar,
