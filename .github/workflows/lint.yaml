@@ -25,6 +25,9 @@ jobs:
           node-version: 18
           cache: yarn
 
+      # Due to unplugged packages, this is needed
+      - run: yarn install --immutable --immutable-cache
+
       - run: yarn format:check
       - run: yarn lint
 
