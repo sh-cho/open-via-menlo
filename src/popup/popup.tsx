@@ -17,7 +17,7 @@ import { createRoot } from 'react-dom/client';
 import './popup.css';
 
 const App: React.FC<EmptyProps> = () => {
-  const [checked, setChecked] = useState(false);
+  const [_checked, setChecked] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -79,7 +79,7 @@ const App: React.FC<EmptyProps> = () => {
         <FormControlLabel
           control={
             <Switch
-              checked={checked}
+              checked={_checked}
               onChange={handleChange}
               aria-describedby="switch-helper-text"
             />
