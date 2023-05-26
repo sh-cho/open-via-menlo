@@ -9,13 +9,11 @@ import { prependAllLinks } from '~/utils/helpers';
       await chrome.storage.sync.get(constants.STORAGE_SETTING_KEY)
     )[constants.STORAGE_SETTING_KEY] as ExcludeSetting;
     if (!savedValue) {
-      console.log('** no saved value');
       return;
     }
 
     const { autoReplaceEnabled, excludeType, excludePatterns } = savedValue;
     if (!autoReplaceEnabled) {
-      console.log('** auto replace disabled');
       return;
     }
 

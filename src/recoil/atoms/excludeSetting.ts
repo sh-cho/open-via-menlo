@@ -12,11 +12,6 @@ export interface ExcludeSetting {
   autoReplaceEnabled: boolean;
 }
 
-const saveThrottled = _.throttle((key: string, value: ExcludeSetting) => {
-  chrome.storage.sync.set({ [key]: value });
-  console.log('** saved', value);
-}, 2000);
-
 const chromeStorageEffect: (key: string) => AtomEffect<ExcludeSetting> =
   (key: string) =>
   ({ setSelf, onSet }) => {

@@ -7,9 +7,9 @@ import _ from 'lodash';
 chrome.runtime.onInstalled.addListener(onInstalledListener);
 chrome.contextMenus.onClicked.addListener(onClickedListener);
 
-const saveThrottled2 = _.throttle((key: string, value: ExcludeSetting) => {
+const saveThrottled = _.throttle((key: string, value: ExcludeSetting) => {
   chrome.storage.sync.set({ [key]: value });
-  console.log('** saved2', value);
+  console.log('** saved', value);
 }, 2000);
 
 chrome.runtime.onMessage.addListener(
@@ -17,7 +17,7 @@ chrome.runtime.onMessage.addListener(
     console.log('🔎 Message received', message, sender);
     // await updateBadgeText(message.url, message.on);
 
-    saveThrottled2(
+    saveThrottled(
       constants.STORAGE_SETTING_KEY,
       message[constants.STORAGE_SETTING_KEY],
     );

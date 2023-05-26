@@ -19,67 +19,12 @@ const App: React.FC<EmptyProps> = () => {
   const [excludeSetting, setExcludeSetting] =
     useRecoilState<ExcludeSetting>(excludeSettingState);
 
-  // const [_checked, setChecked] = useState(false);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const { autoReplace } = await chrome.storage.sync.get('autoReplace');
-  //       console.log(`🎈 autoReplace get: ${autoReplace}`);
-  //       setChecked(autoReplace);
-  //     } catch (e) {
-  //       console.log(`🎈 autoReplace get error: ${e}`);
-  //       await Promise.all([
-  //         chrome.storage.sync.set({ autoReplace: false }),
-  //         updateBadgeText(window.location.href, false),
-  //       ]);
-  //       setChecked(false);
-  //     }
-  //   })();
-  // }, []);
-
-  // const handleChange = async (checked: boolean) => {
-  //   console.log(`🎈 autoReplace set: ${checked}`);
-
-  //   await chrome.storage.sync.set({ autoReplace: checked });
-  //   setChecked(checked);
-
-  //   try {
-  //     const activeTabs: chrome.tabs.Tab[] = await chrome.tabs.query({
-  //       active: true,
-  //       lastFocusedWindow: true,
-  //     }); // active: 열린 탭
-
-  //     console.log(`🎈 activeTabs: ${JSON.stringify(activeTabs)}`);
-
-  //     // TODO: multiple windows ..
-  //     const tab = activeTabs[0];
-  //     if (!tab.url || !tab.id || !tab.url.match(String.raw`https?://*`)) {
-  //       return;
-  //     }
-
-  //     // XXX: how can I send with chrome.tabs.sendMessage? I think this is the problem
-  //     await chrome.runtime.sendMessage({
-  //       url: tab.url,
-  //       on: checked,
-  //     });
-  //   } catch (e) {
-  //     console.log(`🎈 sendMessage error: ${e}`);
-  //   }
-  // };
-
-  const clearStorage = () => {
-    console.log(`🎈 clear storage`);
-    chrome.storage.sync.clear();
-  };
-
   return (
     <Space direction="vertical" style={{ display: 'flex' }}>
       <Space align="center">
         <Switch
           checked={excludeSetting.autoReplaceEnabled}
           onChange={(checked, event) => {
-            console.log(`🎈 checked: ${checked}`);
             setExcludeSetting({
               ...excludeSetting,
               autoReplaceEnabled: checked,
