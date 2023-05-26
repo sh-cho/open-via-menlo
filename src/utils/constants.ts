@@ -8,5 +8,7 @@ export const constants = {
     'tel:',
     'javascript:',
     'chrome-extension:',
+    'chrome:',
   ],
+  STORAGE_SETTING_KEY: 'OPEN_VIA_MENLO_EXCLUDE_SETTING',
 } as const;

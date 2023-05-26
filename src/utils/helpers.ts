@@ -1,8 +1,42 @@
+import { ExcludeType } from '~/recoil/atoms/excludeSetting';
+
 import minimatch from 'minimatch';
 
 import { constants } from './constants';
 
-export const prependAllLinks = async (): Promise<void> => {
+const getRootDomain = (url: string) =>
+  new URL(url).hostname.split('.').slice(-2).join('.');
+
+const isExcluded = (
+  url: string,
+  excludeType: string,
+  excludePatterns: string[],
+): boolean => {
+  console.log('** isExcluded', url, excludeType, excludePatterns);
+
+  // XXX: better way to do this?
+  switch (excludeType) {
+    case 'domain':
+      // XXX: not accurate!
+      return excludePatterns.some((pattern) => url.includes(pattern));
+
+    case 'regex':
+      // XXX: It's gonna be slow
+      return excludePatterns.some((pattern) => new RegExp(pattern).test(url));
+
+    case 'glob':
+      return excludePatterns.some((pattern) => minimatch(url, pattern));
+
+    default:
+      return false;
+  }
+};
+
+// TODO: enhance replace rules
+export const prependAllLinks = async (
+  excludeType: ExcludeType,
+  excludePatterns: string[],
+): Promise<void> => {
   // Get all anchor tags on the page
   const links = document.getElementsByTagName('a');
 
@@ -12,51 +46,34 @@ export const prependAllLinks = async (): Promise<void> => {
     if (
       !href ||
       href.startsWith(constants.MENLO_URL) ||
-      constants.BLACKLISTED_PREFIXES.some((prefix) => href.startsWith(prefix))
+      constants.BLACKLISTED_PREFIXES.some((prefix) =>
+        href.startsWith(prefix),
+      ) ||
+      isExcluded(href, excludeType, excludePatterns)
     ) {
+      console.log('** skipping', href);
       continue;
     }
 
-    // TODO: enhance replace rules
-    const newHref = href.startsWith('/')
-      ? `${constants.MENLO_URL}${href}`
-      : `${constants.MENLO_URL}/${href}`;
+    // TODO: deal with relative paths
+    // ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    let newHref = '';
+    if (href.startsWith('/')) {
+      newHref = `${constants.MENLO_URL}${href}`;
+    } else {
+      newHref = `${constants.MENLO_URL}/${href}`;
+    }
 
     links[i].setAttribute('href', newHref);
   }
 };
 
-export const isExcluded = async (url: string): Promise<boolean> => {
-  try {
-    const excludeUrlPatterns = (
-      await chrome.storage.sync.get('excludeUrlPatterns')
-    ).excludeUrlPatterns as string[];
+export const updateBadgeText = async (on: boolean) => {
+  const text = on ? 'ON' : '';
+  const bgColor = on ? '#3266E3' : '#CCCCCC';
 
-    if (!excludeUrlPatterns || excludeUrlPatterns.length === 0) {
-      return false;
-    }
-
-    return excludeUrlPatterns.some((pattern) => minimatch(url, pattern));
-  } catch (e) {
-    console.error('🔴 [isExcluded]', e);
-
-    return false;
-  }
-};
-
-export const updateBadgeText = async (currentTabUrl: string, on: boolean) => {
-  console.log('🔎 Updating badge text', currentTabUrl, on);
-
-  const excluded = await isExcluded(currentTabUrl);
-  const text = on ? (excluded ? 'X' : 'ON') : '';
-  const bgColor = excluded ? '#CCCCCC' : '#3266E3';
-  await chrome.action.setBadgeText({ text });
-  await chrome.action.setBadgeBackgroundColor({ color: bgColor });
-};
-
-export const updateBadgeTextOnTabActions = async (currentTabUrl: string) => {
-  console.log('🔎 Updating badge text on tab actions', currentTabUrl);
-
-  const { autoReplace } = await chrome.storage.sync.get('autoReplace');
-  await updateBadgeText(currentTabUrl, autoReplace);
+  await Promise.all([
+    chrome.action.setBadgeText({ text }),
+    chrome.action.setBadgeBackgroundColor({ color: bgColor }),
+  ]);
 };

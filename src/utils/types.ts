@@ -5,3 +5,7 @@ export type MyState = {
   autoReplace: boolean;
   excludeUrlPatterns: string[];
 };
+
+export interface ExcludeOption {
+  filterType: 'domain' | 'regex' | 'glob';
+}

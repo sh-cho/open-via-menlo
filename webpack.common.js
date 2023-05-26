@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const childProcess = require('child_process');
 const path = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -47,6 +49,20 @@ module.exports = {
         },
       ],
     }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser.js',
+    }),
+    new webpack.EnvironmentPlugin({
+      stage: JSON.stringify(process.env.stage) || 'dev',
+      commitHash: childProcess
+        .execSync('git rev-parse --short HEAD')
+        .toString()
+        .trim(),
+      commitDate: childProcess
+        .execSync('git show -s --format=%ci')
+        .toString()
+        .trim(),
+    }),
     ...getHtmlPlugins(['popup', 'options']),
   ],
   output: {
@@ -60,13 +76,16 @@ module.exports = {
       },
     },
   },
+  experiments: {
+    topLevelAwait: true,
+  },
 };
 
 function getHtmlPlugins(chunks) {
   return chunks.map(
     (chunk) =>
       new HtmlPlugin({
-        title: 'React Extension',
+        title: 'Open-via-menlo options',
         filename: `${chunk}.html`,
         chunks: [chunk],
       }),

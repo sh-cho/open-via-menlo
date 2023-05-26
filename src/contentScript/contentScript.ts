@@ -1,20 +1,25 @@
-import { isExcluded, prependAllLinks } from '~/utils/helpers';
+import { ExcludeSetting } from '~/recoil/atoms/excludeSetting';
+import { constants } from '~/utils/constants';
+import { prependAllLinks } from '~/utils/helpers';
 
 /// XXX: is this the right way to do this?
 (async () => {
   try {
-    const { autoReplace } = await chrome.storage.sync.get('autoReplace');
-    if (!autoReplace) {
+    const savedValue = (
+      await chrome.storage.sync.get(constants.STORAGE_SETTING_KEY)
+    )[constants.STORAGE_SETTING_KEY] as ExcludeSetting;
+    if (!savedValue) {
+      console.log('** no saved value');
       return;
     }
 
-    const excluded = await isExcluded(window.location.href);
-    if (excluded) {
-      console.log('🔎 Skipping excluded url', window.location.href);
+    const { autoReplaceEnabled, excludeType, excludePatterns } = savedValue;
+    if (!autoReplaceEnabled) {
+      console.log('** auto replace disabled');
       return;
     }
 
-    await prependAllLinks();
+    await prependAllLinks(excludeType, excludePatterns);
   } catch (e) {
     console.log(e);
   }

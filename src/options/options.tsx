@@ -1,88 +1,111 @@
+import {
+  ExcludeSetting,
+  excludeSettingState,
+} from '~/recoil/atoms/excludeSetting';
 import { EmptyProps } from '~/utils/types';
 
-import {
-  AppBar,
-  Box,
-  CssBaseline,
-  TextField,
-  Toolbar,
-  Typography,
-} from '@mui/material';
-import _ from 'lodash';
-import React, { useEffect, useState, useCallback } from 'react';
-import { createRoot } from 'react-dom/client';
+import { Alert, Col, Divider, Form, Input, Radio, Row, Typography } from 'antd';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { RecoilRoot, useRecoilState } from 'recoil';
 
-const App: React.FC<EmptyProps> = () => {
-  const [_excludeUrlPatterns, setExcludeUrlPatterns] = useState('');
+const { Text, Title } = Typography;
+const { TextArea } = Input;
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const { excludeUrlPatterns } = await chrome.storage.sync.get(
-          'excludeUrlPatterns',
-        );
-        console.log(`#️⃣ excludeUrlPatterns get: ${excludeUrlPatterns}`);
-        setExcludeUrlPatterns(excludeUrlPatterns.join('\n'));
-      } catch (e) {
-        console.log(`#️⃣ excludeUrlPatterns get error: ${e}`);
-        await chrome.storage.sync.set({ excludeUrlPatterns: '' });
-        setExcludeUrlPatterns('');
-      }
-    })();
-  }, []);
+export const Options: React.FC<EmptyProps> = () => {
+  // recoil
+  const [excludeSetting, setExcludeSetting] =
+    useRecoilState<ExcludeSetting>(excludeSettingState);
 
-  const saveToStorage = _.debounce(async (_val: string) => {
-    const patterns = _val.split('\n').filter((pattern) => pattern.length > 0);
-    console.log(`#️⃣ excludeUrlPatterns set: ${patterns}`);
-    await chrome.storage.sync.set({ excludeUrlPatterns: patterns });
-  }, 250);
-
-  // XXX: why this is working ?
-  const debouceRequest = useCallback(
-    (value: string) => saveToStorage(value),
-    [],
-  );
-
-  const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    debouceRequest(event.target.value);
-    setExcludeUrlPatterns(event.target.value);
-  };
+  // antd form
+  const [form] = Form.useForm();
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar component="nav">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { sm: 'block' } }}
-          >
-            open-via-menlo option
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Box component="main" sx={{ p: 3, width: 1 }}>
-        <Toolbar />
-        <Box component="form" noValidate autoComplete="off">
-          <TextField
-            id="exclude-url-patterns"
-            label="(Optional) Auto-replace Exclude URL patterns (glob)"
-            fullWidth
-            multiline
-            minRows={4}
-            helperText="➡️ If URL of current tab matches for any pattern, auto-replace is disabled. / glob patterns, one per line. / ex. http?://*.kakaocorp.com/*"
-            value={_excludeUrlPatterns}
-            onChange={handleChange}
+    <>
+      <Row>
+        <Col span={4} />
+        <Col span={16}>
+          <Title level={2}>Open-via-menlo options</Title>
+          <Alert
+            message={
+              <span>
+                All data is automatically stored in{' '}
+                <Text code>
+                  <a href="https://developer.chrome.com/docs/extensions/reference/storage/#storage-areas">
+                    chrome.storage.sync
+                  </a>
+                </Text>
+              </span>
+            }
+            type="info"
+            showIcon
           />
-        </Box>
-        {/* Add Some links */}
-      </Box>
-    </Box>
+        </Col>
+      </Row>
+      <Divider />
+      <Form
+        layout="horizontal"
+        form={form}
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 16 }}
+      >
+        <Form.Item
+          label="Filter Type"
+          extra={
+            <ul>
+              <li>
+                domain: ex) <Text code>google.com</Text>
+              </li>
+              <li>
+                regex: ex) <Text code>.*(google|kakaocorp).com.*</Text>
+              </li>
+              <li>
+                glob: ex) <Text code>http?://*.kakaocorp.com/*</Text>
+              </li>
+            </ul>
+          }
+        >
+          <Radio.Group
+            value={excludeSetting.excludeType}
+            onChange={(e) => {
+              console.log(`excludeType: ${e.target.value}`);
+              setExcludeSetting({
+                ...excludeSetting,
+                excludeType: e.target.value,
+              });
+            }}
+          >
+            <Radio.Button value="domain">Domain</Radio.Button>
+            <Radio.Button value="regex">Regex</Radio.Button>
+            <Radio.Button value="glob">Glob</Radio.Button>
+          </Radio.Group>
+        </Form.Item>
+        <Form.Item label="Exclude patterns" extra="One per line">
+          <TextArea
+            value={excludeSetting.excludePatterns.join('\n')}
+            rows={20}
+            onChange={(e) => {
+              const patterns = e.target.value.split('\n');
+              console.log(`excludePatterns: ${patterns}`);
+              setExcludeSetting({
+                ...excludeSetting,
+                excludePatterns: patterns,
+              });
+            }}
+          />
+        </Form.Item>
+      </Form>
+    </>
   );
 };
 
 const container = document.createElement('div');
 document.body.appendChild(container);
-const root = createRoot(container);
-root.render(<App />);
+
+ReactDOM.createRoot(container).render(
+  <React.StrictMode>
+    <RecoilRoot>
+      <Options />
+    </RecoilRoot>
+  </React.StrictMode>,
+);

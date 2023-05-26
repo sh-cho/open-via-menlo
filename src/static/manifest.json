@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Open via Menlo",
   "description": "Open links via Menlo Security",
-  "version": "1.1",
+  "version": "1.2",
   "permissions": ["contextMenus", "storage", "tabs"],
   "icons": {
     "16": "icon-16.png",

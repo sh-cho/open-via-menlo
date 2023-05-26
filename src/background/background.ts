@@ -1,33 +1,25 @@
-import { updateBadgeText, updateBadgeTextOnTabActions } from '~/utils/helpers';
+import { ExcludeSetting } from '~/recoil/atoms/excludeSetting';
+import { constants } from '~/utils/constants';
 import { onClickedListener, onInstalledListener } from '~/utils/listeners';
+
+import _ from 'lodash';
 
 chrome.runtime.onInstalled.addListener(onInstalledListener);
 chrome.contextMenus.onClicked.addListener(onClickedListener);
 
-chrome.tabs.onActivated.addListener(
-  async (activeInfo: chrome.tabs.TabActiveInfo) => {
-    console.log('🔎 Tab activated', activeInfo);
-    const currentTab = await chrome.tabs.get(activeInfo.tabId);
-    await updateBadgeTextOnTabActions(currentTab.url || '');
-  },
-);
-
-chrome.tabs.onUpdated.addListener(
-  async (
-    tabId: number,
-    changeInfo: chrome.tabs.TabChangeInfo,
-    tab: chrome.tabs.Tab,
-  ) => {
-    console.log('🔎 Tab updated', tabId, changeInfo, tab);
-    if (changeInfo.url) {
-      await updateBadgeTextOnTabActions(changeInfo.url);
-    }
-  },
-);
+const saveThrottled2 = _.throttle((key: string, value: ExcludeSetting) => {
+  chrome.storage.sync.set({ [key]: value });
+  console.log('** saved2', value);
+}, 2000);
 
 chrome.runtime.onMessage.addListener(
   async (message, sender: chrome.runtime.MessageSender, sendResponse) => {
     console.log('🔎 Message received', message, sender);
-    await updateBadgeText(message.url, message.on);
+    // await updateBadgeText(message.url, message.on);
+
+    saveThrottled2(
+      constants.STORAGE_SETTING_KEY,
+      message[constants.STORAGE_SETTING_KEY],
+    );
   },
 );
