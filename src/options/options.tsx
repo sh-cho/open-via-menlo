@@ -50,7 +50,7 @@ export const Options: React.FC<EmptyProps> = () => {
         wrapperCol={{ span: 16 }}
       >
         <Form.Item
-          label="Filter Type"
+          label="Exclude Type"
           extra={
             <ul>
               <li>
