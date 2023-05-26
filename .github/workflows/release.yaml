@@ -21,11 +21,11 @@ jobs:
       - run: yarn build
       - uses: montudor/action-zip@v1
         with:
-          args: zip -qq -r ${{ github.ref_name }}.zip dist
+          args: zip -qq -r dist.zip dist
 
       - uses: softprops/action-gh-release@v1
         with:
-          files: ${{ github.ref_name }}.zip
+          files: dist.zip
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
