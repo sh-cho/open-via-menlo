@@ -3,7 +3,7 @@ name: Create release and upload artifact
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 permissions:
   contents: write
