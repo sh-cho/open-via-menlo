@@ -22,10 +22,9 @@ Open links via [Menlo Security](https://safe.menlosecurity.com/).
 
 ## How to use
 
-- Use context menu
-  - Open link or move current page via menlo security
-  - Go back to normal page
-- Set options to automatically modify links
+| Open link via menlo | Go back to normal page | Set options |
+:--:|:--:|:--:
+![](https://github.com/sh-cho/open-via-menlo/assets/11611397/f624312c-7a69-4e8d-85dd-19676ed7c8d2)  |  ![](https://github.com/sh-cho/open-via-menlo/assets/11611397/0a2c658a-560e-4a7c-88df-a54883b4d27d) | ![](https://github.com/sh-cho/open-via-menlo/assets/11611397/47d513c1-a587-414c-8127-af02a3f30463)
 
 ## How to contribute
 See [CONTRIBUTING.md](./CONTRIBUTING.md)
