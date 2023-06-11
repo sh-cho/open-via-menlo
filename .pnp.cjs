@@ -69,7 +69,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["typescript", "patch:typescript@npm%3A5.0.2#~builtin<compat/typescript>::version=5.0.2&hash=85af82"],\
             ["webpack", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:5.76.2"],\
             ["webpack-cli", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:5.0.1"],\
-            ["webpack-merge", "npm:5.8.0"]\
+            ["webpack-merge", "npm:5.9.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -5893,7 +5893,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["typescript", "patch:typescript@npm%3A5.0.2#~builtin<compat/typescript>::version=5.0.2&hash=85af82"],\
             ["webpack", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:5.76.2"],\
             ["webpack-cli", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:5.0.1"],\
-            ["webpack-merge", "npm:5.8.0"]\
+            ["webpack-merge", "npm:5.9.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -8688,7 +8688,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["webpack", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:5.76.2"],\
             ["webpack-bundle-analyzer", null],\
             ["webpack-dev-server", null],\
-            ["webpack-merge", "npm:5.8.0"]\
+            ["webpack-merge", "npm:5.9.0"]\
           ],\
           "packagePeers": [\
             "@types/webpack-bundle-analyzer",\
@@ -8704,10 +8704,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["webpack-merge", [\
-        ["npm:5.8.0", {\
-          "packageLocation": "./.yarn/cache/webpack-merge-npm-5.8.0-e3c95fdc3c-88786ab910.zip/node_modules/webpack-merge/",\
+        ["npm:5.9.0", {\
+          "packageLocation": "./.yarn/cache/webpack-merge-npm-5.9.0-9110e650de-64fe2c23aa.zip/node_modules/webpack-merge/",\
           "packageDependencies": [\
-            ["webpack-merge", "npm:5.8.0"],\
+            ["webpack-merge", "npm:5.9.0"],\
             ["clone-deep", "npm:4.0.1"],\
             ["wildcard", "npm:2.0.0"]\
           ],\
