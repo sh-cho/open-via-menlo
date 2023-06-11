@@ -19,5 +19,6 @@
     "automergeType": "branch",
     "platformAutomerge": true
   },
+  "automerge": true,
   "platformAutomerge": true
 }
