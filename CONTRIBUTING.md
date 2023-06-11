@@ -69,7 +69,7 @@ Push a tag with `v` prefix to build (ex. `v1.2.3`)
 
 Build artifact is attached to GitHub Release.
 
-See [release workflow](/.github/workflows/release.yml)
+See [release workflow](/.github/workflows/release.yaml)
 
 ## references
 ### chrome api docs
