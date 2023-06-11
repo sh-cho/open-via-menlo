@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 jobs:
-  check-version:
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Check version
@@ -21,13 +21,13 @@ jobs:
           [[ ${{ inputs.version }} ]] || { echo "input version is empty" ; exit 1; }
           [[ ${{ inputs.version }} =~ $pattern ]] || { echo "input version should be like '1.2.3'" ; exit 1; }
       - name: Check default branch
-        if: ${{ always() }}
+        if: always()
         shell: bash
         run: |
           [[ ${{ github.ref == format('refs/heads/{0}', github.repository.default_branch) }} ]] || { echo "not default branch" ; exit 1; }
 
   build:
-    needs: check-version
+    needs: check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
