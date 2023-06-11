@@ -13,6 +13,3 @@ yarn.lock
 
 # no-need
 *.md
-
-# third-party
-renovate.json
