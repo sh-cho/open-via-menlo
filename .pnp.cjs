@@ -57,7 +57,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:4.6.0"],\
             ["html-webpack-plugin", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:5.5.3"],\
             ["lodash", "npm:4.17.21"],\
-            ["minimatch", "npm:7.4.2"],\
+            ["minimatch", "npm:7.4.6"],\
             ["prettier", "npm:2.8.6"],\
             ["process", "npm:0.11.10"],\
             ["react", "npm:18.2.0"],\
@@ -5477,10 +5477,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:7.4.2", {\
-          "packageLocation": "./.yarn/cache/minimatch-npm-7.4.2-da654284bf-9e341b04e6.zip/node_modules/minimatch/",\
+        ["npm:7.4.6", {\
+          "packageLocation": "./.yarn/cache/minimatch-npm-7.4.6-f3feee458c-1a6c8d2261.zip/node_modules/minimatch/",\
           "packageDependencies": [\
-            ["minimatch", "npm:7.4.2"],\
+            ["minimatch", "npm:7.4.6"],\
             ["brace-expansion", "npm:2.0.1"]\
           ],\
           "linkType": "HARD"\
@@ -5881,7 +5881,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:4.6.0"],\
             ["html-webpack-plugin", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:5.5.3"],\
             ["lodash", "npm:4.17.21"],\
-            ["minimatch", "npm:7.4.2"],\
+            ["minimatch", "npm:7.4.6"],\
             ["prettier", "npm:2.8.6"],\
             ["process", "npm:0.11.10"],\
             ["react", "npm:18.2.0"],\
