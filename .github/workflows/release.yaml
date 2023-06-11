@@ -57,7 +57,9 @@ jobs:
       - uses: softprops/action-gh-release@v1
         with:
           name: v${{ inputs.version }}
-          files: v${{ inputs.version }}.zip
+          files: |
+            LICENSE
+            v${{ inputs.version }}.zip
           draft: true
           tag_name: v${{ inputs.version }}
         env:
