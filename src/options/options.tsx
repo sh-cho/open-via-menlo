@@ -80,7 +80,19 @@ export const Options: React.FC<EmptyProps> = () => {
             <Radio.Button value="glob">Glob</Radio.Button>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="Exclude patterns" extra="One per line">
+        <Form.Item
+          label="Exclude patterns"
+          // extra="One per line / Line starting with # will be ignored /"
+          extra={
+            <ul>
+              <li>One per line</li>
+              <li>
+                Line starting with <Text code>#</Text> or empty line will be
+                ignored
+              </li>
+            </ul>
+          }
+        >
           <TextArea
             value={excludeSetting.excludePatterns.join('\n')}
             rows={20}

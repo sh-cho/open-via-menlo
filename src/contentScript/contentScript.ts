@@ -17,7 +17,12 @@ import { prependAllLinks } from '~/utils/helpers';
       return;
     }
 
-    await prependAllLinks(excludeType, excludePatterns);
+    // empty string or string starting with # will be ignored
+    const excludePatternsFiltered = excludePatterns.filter(
+      (pattern) => pattern && !pattern.startsWith('#'),
+    );
+
+    await prependAllLinks(excludeType, excludePatternsFiltered);
   } catch (e) {
     console.log(e);
   }
