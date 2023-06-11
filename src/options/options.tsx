@@ -82,7 +82,6 @@ export const Options: React.FC<EmptyProps> = () => {
         </Form.Item>
         <Form.Item
           label="Exclude patterns"
-          // extra="One per line / Line starting with # will be ignored /"
           extra={
             <ul>
               <li>One per line</li>
