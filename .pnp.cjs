@@ -32,7 +32,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/cli", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:7.21.0"],\
             ["@babel/core", "npm:7.21.3"],\
             ["@babel/preset-react", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:7.18.6"],\
-            ["@types/chrome", "npm:0.0.224"],\
+            ["@types/chrome", "npm:0.0.237"],\
             ["@types/eslint", "npm:8.21.3"],\
             ["@types/jest", "npm:29.5.0"],\
             ["@types/lodash", "npm:4.14.191"],\
@@ -1176,10 +1176,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/chrome", [\
-        ["npm:0.0.224", {\
-          "packageLocation": "./.yarn/cache/@types-chrome-npm-0.0.224-482fe2c82d-2dd2291a81.zip/node_modules/@types/chrome/",\
+        ["npm:0.0.237", {\
+          "packageLocation": "./.yarn/cache/@types-chrome-npm-0.0.237-c8ddbf6964-9dfb007006.zip/node_modules/@types/chrome/",\
           "packageDependencies": [\
-            ["@types/chrome", "npm:0.0.224"],\
+            ["@types/chrome", "npm:0.0.237"],\
             ["@types/filesystem", "npm:0.0.32"],\
             ["@types/har-format", "npm:1.2.10"]\
           ],\
@@ -5803,7 +5803,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/cli", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:7.21.0"],\
             ["@babel/core", "npm:7.21.3"],\
             ["@babel/preset-react", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:7.18.6"],\
-            ["@types/chrome", "npm:0.0.224"],\
+            ["@types/chrome", "npm:0.0.237"],\
             ["@types/eslint", "npm:8.21.3"],\
             ["@types/jest", "npm:29.5.0"],\
             ["@types/lodash", "npm:4.14.191"],\
