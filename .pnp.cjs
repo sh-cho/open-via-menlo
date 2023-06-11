@@ -34,7 +34,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/preset-react", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:7.18.6"],\
             ["@types/chrome", "npm:0.0.237"],\
             ["@types/eslint", "npm:8.21.3"],\
-            ["@types/jest", "npm:29.5.0"],\
+            ["@types/jest", "npm:29.5.2"],\
             ["@types/lodash", "npm:4.14.191"],\
             ["@types/minimatch", "npm:5.1.2"],\
             ["@types/node", "npm:18.15.3"],\
@@ -1311,10 +1311,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/jest", [\
-        ["npm:29.5.0", {\
-          "packageLocation": "./.yarn/cache/@types-jest-npm-29.5.0-18eef6c3cc-cd877e5c56.zip/node_modules/@types/jest/",\
+        ["npm:29.5.2", {\
+          "packageLocation": "./.yarn/cache/@types-jest-npm-29.5.2-1a72e55a50-7d205599ea.zip/node_modules/@types/jest/",\
           "packageDependencies": [\
-            ["@types/jest", "npm:29.5.0"],\
+            ["@types/jest", "npm:29.5.2"],\
             ["expect", "npm:29.5.0"],\
             ["pretty-format", "npm:29.5.0"]\
           ],\
@@ -5805,7 +5805,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/preset-react", "virtual:7f1c5be434949b3abaad7438cba67a9267721cdb3c3f4bb335bcbce9688c44e490151c7fd74ddc2387d85b5767f659c09544219df803c8649c509d906c71df2e#npm:7.18.6"],\
             ["@types/chrome", "npm:0.0.237"],\
             ["@types/eslint", "npm:8.21.3"],\
-            ["@types/jest", "npm:29.5.0"],\
+            ["@types/jest", "npm:29.5.2"],\
             ["@types/lodash", "npm:4.14.191"],\
             ["@types/minimatch", "npm:5.1.2"],\
             ["@types/node", "npm:18.15.3"],\
