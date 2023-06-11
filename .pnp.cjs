@@ -35,7 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/chrome", "npm:0.0.237"],\
             ["@types/eslint", "npm:8.21.3"],\
             ["@types/jest", "npm:29.5.2"],\
-            ["@types/lodash", "npm:4.14.191"],\
+            ["@types/lodash", "npm:4.14.195"],\
             ["@types/minimatch", "npm:5.1.2"],\
             ["@types/node", "npm:18.15.3"],\
             ["@types/prettier", "npm:2.7.2"],\
@@ -1438,10 +1438,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/lodash", [\
-        ["npm:4.14.191", {\
-          "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.191-67a04a969b-ba0d5434e1.zip/node_modules/@types/lodash/",\
+        ["npm:4.14.195", {\
+          "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.195-a2a8254638-39b75ca635.zip/node_modules/@types/lodash/",\
           "packageDependencies": [\
-            ["@types/lodash", "npm:4.14.191"]\
+            ["@types/lodash", "npm:4.14.195"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5957,7 +5957,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/chrome", "npm:0.0.237"],\
             ["@types/eslint", "npm:8.21.3"],\
             ["@types/jest", "npm:29.5.2"],\
-            ["@types/lodash", "npm:4.14.191"],\
+            ["@types/lodash", "npm:4.14.195"],\
             ["@types/minimatch", "npm:5.1.2"],\
             ["@types/node", "npm:18.15.3"],\
             ["@types/prettier", "npm:2.7.2"],\
