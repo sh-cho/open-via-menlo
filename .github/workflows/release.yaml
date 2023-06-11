@@ -46,11 +46,13 @@ jobs:
       - run: yarn build
       - uses: montudor/action-zip@v1
         with:
-          args: zip -qq -r ${{ inputs.version }}.zip dist
+          args: zip -qq -r v${{ inputs.version }}.zip dist
 
       - uses: softprops/action-gh-release@v1
         with:
-          files: ${{ inputs.version }}.zip
+          name: v${{ inputs.version }}
+          files: v${{ inputs.version }}.zip
           draft: true
+          tag_name: v${{ inputs.version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
