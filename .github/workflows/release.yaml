@@ -14,11 +14,17 @@ jobs:
   check-version:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Check version
+        shell: bash
+        run: |
           pattern="[0-9]+\.[0-9]+\.[0-9]+"
           [[ ${{ inputs.version }} ]] || { echo "input version is empty" ; exit 1; }
           [[ ${{ inputs.version }} =~ $pattern ]] || { echo "input version should be like '1.2.3'" ; exit 1; }
+      - name: Check default branch
+        if: ${{ always() }}
         shell: bash
+        run: |
+          [[ ${{ github.ref == format('refs/heads/{0}', github.repository.default_branch) }} ]] || { echo "not default branch" ; exit 1; }
 
   build:
     needs: check-version
