@@ -49,7 +49,7 @@ blame.ignorerevsfile=.git-blame-ignore-revs
 You can check `blame.ignoreRevsFile` config with `git config --list --local`
 
 ### Run locally
-```
+```sh
 yarn start
 ```
 run locally.
@@ -58,13 +58,18 @@ Go to `chrome://extensions`, select `Load unpacked` and select `./dist` folder.
 
 Refresh manually when updated.
 
-### Build prod
-```
+### Build
+```sh
 yarn build
 ```
 
-TODO: build workflow
+### Release
 
+Push a tag with `v` prefix to build (ex. `v1.2.3`)
+
+Build artifact is attached to GitHub Release.
+
+See [release workflow](/.github/workflows/release.yml)
 
 ## references
 ### chrome api docs
