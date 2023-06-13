@@ -1,8 +1,8 @@
+import _ from 'lodash';
+
 import { ExcludeSetting } from '~/recoil/atoms/excludeSetting';
 import { constants } from '~/utils/constants';
 import { onClickedListener, onInstalledListener } from '~/utils/listeners';
-
-import _ from 'lodash';
 
 chrome.runtime.onInstalled.addListener(onInstalledListener);
 chrome.contextMenus.onClicked.addListener(onClickedListener);

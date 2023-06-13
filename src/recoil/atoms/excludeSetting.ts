@@ -1,7 +1,7 @@
-import { constants } from '~/utils/constants';
-
 import _ from 'lodash';
 import { AtomEffect, atom } from 'recoil';
+
+import { constants } from '~/utils/constants';
 
 export type ExcludeType = 'domain' | 'regex' | 'glob';
 

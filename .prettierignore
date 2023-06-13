@@ -10,6 +10,7 @@ coverage
 .pnp.*js
 .yarnrc.yml
 yarn.lock
+pnpm-lock.yaml
 
 # no-need
 *.md

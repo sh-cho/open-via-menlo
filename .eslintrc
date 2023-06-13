@@ -19,6 +19,7 @@
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-nested-ternary": "warn",
     "prefer-destructuring": "off",
+    "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",
     "import/order": [
       "error",

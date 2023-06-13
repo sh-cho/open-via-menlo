@@ -1,15 +1,15 @@
+import { SmileOutlined } from '@ant-design/icons';
+import { Button, Divider, Space, Switch, Typography } from 'antd';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { RecoilRoot, useRecoilState } from 'recoil';
+
 import {
   ExcludeSetting,
   excludeSettingState,
 } from '~/recoil/atoms/excludeSetting';
 import { updateBadgeText } from '~/utils/helpers';
 import { EmptyProps } from '~/utils/types';
-
-import { SettingFilled } from '@ant-design/icons';
-import { Button, Divider, Space, Switch, Typography } from 'antd';
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { RecoilRoot, useRecoilState } from 'recoil';
 
 import './popup.css';
 
@@ -37,7 +37,7 @@ const App: React.FC<EmptyProps> = () => {
       <Text mark>⚠️ Refresh page after change</Text>
       <Space style={{ display: 'flex', justifyContent: 'end' }}>
         <Button
-          icon={<SettingFilled />}
+          icon={<SmileOutlined />}
           onClick={() => {
             chrome.runtime.openOptionsPage();
           }}

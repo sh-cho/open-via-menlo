@@ -1,6 +1,6 @@
-import { ExcludeType } from '~/recoil/atoms/excludeSetting';
-
 import minimatch from 'minimatch';
+
+import { ExcludeType } from '~/recoil/atoms/excludeSetting';
 
 import { constants } from './constants';
 
