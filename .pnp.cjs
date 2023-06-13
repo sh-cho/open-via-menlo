@@ -37,7 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:29.5.2"],\
             ["@types/lodash", "npm:4.14.195"],\
             ["@types/minimatch", "npm:5.1.2"],\
-            ["@types/node", "npm:18.16.17"],\
+            ["@types/node", "npm:18.16.18"],\
             ["@types/prettier", "npm:2.7.3"],\
             ["@types/react", "npm:18.2.12"],\
             ["@types/react-dom", "npm:18.2.5"],\
@@ -893,7 +893,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@jest/schemas", "npm:29.4.3"],\
             ["@types/istanbul-lib-coverage", "npm:2.0.4"],\
             ["@types/istanbul-reports", "npm:3.0.1"],\
-            ["@types/node", "npm:20.3.0"],\
+            ["@types/node", "npm:20.3.1"],\
             ["@types/yargs", "npm:17.0.22"],\
             ["chalk", "npm:4.1.2"]\
           ],\
@@ -1369,7 +1369,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/glob", "npm:7.2.0"],\
             ["@types/minimatch", "npm:5.1.2"],\
-            ["@types/node", "npm:20.3.0"]\
+            ["@types/node", "npm:20.3.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1469,17 +1469,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/node", [\
-        ["npm:18.16.17", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-18.16.17-9aa686b2c3-2f7e3a552d.zip/node_modules/@types/node/",\
+        ["npm:18.16.18", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-18.16.18-d20a21c8b6-d32d8a0a04.zip/node_modules/@types/node/",\
           "packageDependencies": [\
-            ["@types/node", "npm:18.16.17"]\
+            ["@types/node", "npm:18.16.18"]\
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:20.3.0", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-20.3.0-d475058203-613e878174.zip/node_modules/@types/node/",\
+        ["npm:20.3.1", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-20.3.1-86012346c0-63a393ab6d.zip/node_modules/@types/node/",\
           "packageDependencies": [\
-            ["@types/node", "npm:20.3.0"]\
+            ["@types/node", "npm:20.3.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5250,7 +5250,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["jest-util", "npm:29.5.0"],\
             ["@jest/types", "npm:29.5.0"],\
-            ["@types/node", "npm:20.3.0"],\
+            ["@types/node", "npm:20.3.1"],\
             ["chalk", "npm:4.1.2"],\
             ["ci-info", "npm:3.8.0"],\
             ["graceful-fs", "npm:4.2.11"],\
@@ -5264,7 +5264,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/jest-worker-npm-27.5.1-1c110b5894-98cd68b696.zip/node_modules/jest-worker/",\
           "packageDependencies": [\
             ["jest-worker", "npm:27.5.1"],\
-            ["@types/node", "npm:20.3.0"],\
+            ["@types/node", "npm:20.3.1"],\
             ["merge-stream", "npm:2.0.0"],\
             ["supports-color", "npm:8.1.1"]\
           ],\
@@ -5985,7 +5985,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:29.5.2"],\
             ["@types/lodash", "npm:4.14.195"],\
             ["@types/minimatch", "npm:5.1.2"],\
-            ["@types/node", "npm:18.16.17"],\
+            ["@types/node", "npm:18.16.18"],\
             ["@types/prettier", "npm:2.7.3"],\
             ["@types/react", "npm:18.2.12"],\
             ["@types/react-dom", "npm:18.2.5"],\
