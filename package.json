@@ -4,7 +4,7 @@
   "private": true,
   "description": "Open links via Menlo Security",
   "scripts": {
-    "preinstall": "npx only-allow npm",
+    "preinstall": "npx only-allow pnpm",
     "build": "webpack --progress --config webpack.prod.js --env stage=prod",
     "format:check": "prettier --check .",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
