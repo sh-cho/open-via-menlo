@@ -31,7 +31,7 @@ git config --local blame.ignoreRevsFile .git-blame-ignore-revs
 ```
 Set git blame ignore revs file
 
-```
+```ini
 blame.ignorerevsfile=.git-blame-ignore-revs
 ```
 You can check `blame.ignoreRevsFile` config with `git config --list --local`
