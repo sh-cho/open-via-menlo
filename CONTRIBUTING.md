@@ -4,38 +4,26 @@
 
 Use vscode and install extensions below (see [`/.vscode/extensions.json`](/.vscode/extensions.json))
 
-- [zipfs](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs)
 - [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 ### Install
 
-```sh
-brew install yarn
-```
-1. install yarn (with brew or npm)
+> **Note**
+>
+> on Mac
 
 ```sh
-yarn install
+nvm install
+nvm use
 ```
-(You don't have to do this, because this project is using yarn berry zero-install)
+1. install node (ex. with [nvm](https://github.com/nvm-sh/nvm)(Node Version Manager))
 
 ```sh
-yarn dlx @yarnpkg/sdks vscode
+corepack enable
+corepack prepare --activate
 ```
-(check this: https://yarnpkg.com/getting-started/editor-sdks)
-
-2. Generate editor SDK for vscode.
-
-And configure editor sdk
-- (1) Open command palette with <kbd>⌘ cmd</kbd> + <kbd>⇧ shift</kbd> + <kbd>p</kbd> (Windows: <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd>)
-- (2) `Select Typescript Version`
-- (3) `Use Workspace Version (.yarn/sdks/typescript/lib)`
-
-```sh
-yarn plugin import typescript
-```
-3. Install [yarn typescript plugin](https://github.com/yarnpkg/berry/tree/master/packages/plugin-typescript)
+2. Install pnpm (ex. with [Corepack](https://nodejs.org/api/corepack.html))
 
 #### Additional setup
 ```sh
@@ -50,7 +38,7 @@ You can check `blame.ignoreRevsFile` config with `git config --list --local`
 
 ### Run locally
 ```sh
-yarn start
+pnpm start
 ```
 run locally.
 
@@ -60,7 +48,7 @@ Refresh manually when updated.
 
 ### Build
 ```sh
-yarn build
+pnpm build
 ```
 
 ### Release
