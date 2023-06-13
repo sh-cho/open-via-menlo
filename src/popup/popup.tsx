@@ -1,5 +1,5 @@
-import { SmileOutlined } from '@ant-design/icons';
-import { Button, Divider, Space, Switch, Typography } from 'antd';
+import { SettingFilled } from '@ant-design/icons';
+import { Button, Space, Switch, Typography } from 'antd';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { RecoilRoot, useRecoilState } from 'recoil';
@@ -37,7 +37,7 @@ const App: React.FC<EmptyProps> = () => {
       <Text mark>⚠️ Refresh page after change</Text>
       <Space style={{ display: 'flex', justifyContent: 'end' }}>
         <Button
-          icon={<SmileOutlined />}
+          icon={<SettingFilled />}
           onClick={() => {
             chrome.runtime.openOptionsPage();
           }}
