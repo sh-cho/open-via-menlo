@@ -39,14 +39,23 @@ export const prependAllLinks = async (
 ): Promise<void> => {
   // Get all anchor tags on the page
   const links = document.getElementsByTagName('a');
-  const isCurrentPageExcluded = isExcluded(window.location.href, excludeType, excludePatterns);
+  const isCurrentPageExcluded = isExcluded(
+    window.location.href,
+    excludeType,
+    excludePatterns,
+  );
 
   for (let i = 0; i < links.length; i++) {
     const href = links[i].getAttribute('href');
     if (!href) {
       continue;
     }
-    const newHref = getNewHref(href, excludeType, excludePatterns, isCurrentPageExcluded);
+    const newHref = getNewHref(
+      href,
+      excludeType,
+      excludePatterns,
+      isCurrentPageExcluded,
+    );
 
     links[i].setAttribute('href', newHref);
   }
@@ -61,7 +70,9 @@ export function getNewHref(
   if (
     !currentHref ||
     currentHref.startsWith(constants.MENLO_URL) ||
-    constants.BLACKLISTED_PREFIXES.some((prefix) => currentHref.startsWith(prefix)) ||
+    constants.BLACKLISTED_PREFIXES.some((prefix) =>
+      currentHref.startsWith(prefix),
+    ) ||
     isExcluded(currentHref, excludeType, excludePatterns)
   ) {
     console.log('** skipping (1)', currentHref);

@@ -19,7 +19,12 @@ test('Exclude test - domain', () => {
   const isCurrentPageExcluded = false;
 
   const href = 'https://google.com';
-  const newHref = getNewHref(href, excludeType, excludePatterns, isCurrentPageExcluded);
+  const newHref = getNewHref(
+    href,
+    excludeType,
+    excludePatterns,
+    isCurrentPageExcluded,
+  );
   expect(newHref).toBe(href);
 });
 
@@ -29,7 +34,12 @@ test('Prepend test - domain', () => {
   const isCurrentPageExcluded = false;
 
   const href = 'https://example.com';
-  const newHref = getNewHref(href, excludeType, excludePatterns, isCurrentPageExcluded);
+  const newHref = getNewHref(
+    href,
+    excludeType,
+    excludePatterns,
+    isCurrentPageExcluded,
+  );
   expect(newHref).toBe(`${PREPEND_URL}/${href}`);
 });
 
@@ -39,7 +49,12 @@ test('href starts with slash (isCurrentPageExcluded: true)', () => {
   const isCurrentPageExcluded = true;
 
   const href = '/test';
-  const newHref = getNewHref(href, excludeType, excludePatterns, isCurrentPageExcluded);
+  const newHref = getNewHref(
+    href,
+    excludeType,
+    excludePatterns,
+    isCurrentPageExcluded,
+  );
   expect(newHref).toBe(href);
 });
 
@@ -49,7 +64,12 @@ test('href starts with slash (isCurrentPageExcluded: false)', () => {
   const isCurrentPageExcluded = false;
 
   const href = '/test';
-  const newHref = getNewHref(href, excludeType, excludePatterns, isCurrentPageExcluded);
+  const newHref = getNewHref(
+    href,
+    excludeType,
+    excludePatterns,
+    isCurrentPageExcluded,
+  );
   expect(newHref).toBe(`${PREPEND_URL}${href}`);
 });
 
@@ -59,7 +79,12 @@ test('link with only slash (isCurrentPageExcluded: true)', () => {
   const isCurrentPageExcluded = true;
 
   const href = '/';
-  const newHref = getNewHref(href, excludeType, excludePatterns, isCurrentPageExcluded);
+  const newHref = getNewHref(
+    href,
+    excludeType,
+    excludePatterns,
+    isCurrentPageExcluded,
+  );
   expect(newHref).toBe(href);
 });
 
@@ -69,6 +94,11 @@ test('link with only slash (isCurrentPageExcluded: false)', () => {
   const isCurrentPageExcluded = false;
 
   const href = '/';
-  const newHref = getNewHref(href, excludeType, excludePatterns, isCurrentPageExcluded);
+  const newHref = getNewHref(
+    href,
+    excludeType,
+    excludePatterns,
+    isCurrentPageExcluded,
+  );
   expect(newHref).toBe(`${PREPEND_URL}${href}`);
 });
