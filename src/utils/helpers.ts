@@ -4,8 +4,8 @@ import { ExcludeType } from '~/recoil/atoms/excludeSetting';
 
 import { constants } from './constants';
 
-const getRootDomain = (url: string) =>
-  new URL(url).hostname.split('.').slice(-2).join('.');
+// const getRootDomain = (url: string) =>
+//   new URL(url).hostname.split('.').slice(-2).join('.');
 
 const isExcluded = (
   url: string,
@@ -86,9 +86,9 @@ export function getNewHref(
 
   if (currentHref.startsWith('/')) {
     return `${constants.MENLO_URL}${currentHref}`;
-  } else {
-    return `${constants.MENLO_URL}/${currentHref}`;
   }
+
+  return `${constants.MENLO_URL}/${currentHref}`;
 }
 
 export const updateBadgeText = async (on: boolean) => {

@@ -24,7 +24,7 @@ const App: React.FC<EmptyProps> = () => {
       <Space align="center">
         <Switch
           checked={excludeSetting.autoReplaceEnabled}
-          onChange={(checked, event) => {
+          onChange={(checked, _event) => {
             setExcludeSetting({
               ...excludeSetting,
               autoReplaceEnabled: checked,

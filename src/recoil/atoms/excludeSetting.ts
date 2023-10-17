@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { AtomEffect, atom } from 'recoil';
 
 import { constants } from '~/utils/constants';

@@ -1,10 +1,5 @@
-// import { constants } from './constants';
-// import { getNewHref } from './helpers';
-
-//use require
-
-const { getNewHref } = require('./helpers');
-const { constants } = require('./constants');
+import { constants } from './constants';
+import { getNewHref } from './helpers';
 
 const PREPEND_URL = constants.MENLO_URL;
 

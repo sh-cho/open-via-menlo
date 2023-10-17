@@ -13,7 +13,7 @@ const saveThrottled = _.throttle((key: string, value: ExcludeSetting) => {
 }, 2000);
 
 chrome.runtime.onMessage.addListener(
-  async (message, sender: chrome.runtime.MessageSender, sendResponse) => {
+  async (message, sender: chrome.runtime.MessageSender, _sendResponse) => {
     console.log('🔎 Message received', message, sender);
     // await updateBadgeText(message.url, message.on);
 
