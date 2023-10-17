@@ -39,6 +39,7 @@ export const prependAllLinks = async (
 ): Promise<void> => {
   // Get all anchor tags on the page
   const links = document.getElementsByTagName('a');
+  const isCurrentPageExcluded = isExcluded(window.location.href, excludeType, excludePatterns);
 
   // Loop through each link and modify its href attribute
   for (let i = 0; i < links.length; i++) {
@@ -51,12 +52,17 @@ export const prependAllLinks = async (
       ) ||
       isExcluded(href, excludeType, excludePatterns)
     ) {
-      console.log('** skipping', href);
+      console.log('** skipping (1)', href);
       continue;
     }
 
     // TODO: deal with relative paths
     // ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    if (href.startsWith('/') && isCurrentPageExcluded) {
+      console.log('** skipping (2)', href);
+      continue;
+    }
+
     let newHref = '';
     if (href.startsWith('/')) {
       newHref = `${constants.MENLO_URL}${href}`;
