@@ -20,10 +20,9 @@ nvm use
 1. install node (ex. with [nvm](https://github.com/nvm-sh/nvm)(Node Version Manager))
 
 ```sh
-corepack enable
-corepack prepare --activate
+corepack enable pnpm
 ```
-2. Install pnpm (ex. with [Corepack](https://nodejs.org/api/corepack.html))
+2. Install(or enable) pnpm (ex. with [Corepack](https://nodejs.org/api/corepack.html))
 
 #### Additional setup
 ```sh
