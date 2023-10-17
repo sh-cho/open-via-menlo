@@ -37,3 +37,5 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
   - safari
 - [ ] change dev icon / name
 - [ ] neatly print log..
+- Fix known issues
+  - link starts with double slash(ex. `//example.com`)
