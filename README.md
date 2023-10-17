@@ -8,7 +8,7 @@
 
 <!-- Dev badges -->
 [![Build](https://github.com/sh-cho/open-via-menlo/actions/workflows/build.yaml/badge.svg?branch=main&event=push)](https://github.com/sh-cho/open-via-menlo/actions/workflows/build.yaml)
-[![Lint](https://github.com/sh-cho/open-via-menlo/actions/workflows/lint.yaml/badge.svg?branch=main&event=push)](https://github.com/sh-cho/open-via-menlo/actions/workflows/lint.yaml)
+[![CI](https://github.com/sh-cho/open-via-menlo/actions/workflows/ci.yaml/badge.svg?branch=main&event=push)](https://github.com/sh-cho/open-via-menlo/actions/workflows/ci.yaml)
 
 ---
 

@@ -1,4 +1,4 @@
-name: Lint
+name: CI
 
 on:
   push:
@@ -14,7 +14,7 @@ defaults:
     shell: bash
 
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -46,6 +46,7 @@ jobs:
 
       - run: pnpm format:check
       - run: pnpm lint
+      - run: pnpm test
 
       - name: Webpack config test
         run: |

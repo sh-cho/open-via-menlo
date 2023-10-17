@@ -41,38 +41,44 @@ export const prependAllLinks = async (
   const links = document.getElementsByTagName('a');
   const isCurrentPageExcluded = isExcluded(window.location.href, excludeType, excludePatterns);
 
-  // Loop through each link and modify its href attribute
   for (let i = 0; i < links.length; i++) {
     const href = links[i].getAttribute('href');
-    if (
-      !href ||
-      href.startsWith(constants.MENLO_URL) ||
-      constants.BLACKLISTED_PREFIXES.some((prefix) =>
-        href.startsWith(prefix),
-      ) ||
-      isExcluded(href, excludeType, excludePatterns)
-    ) {
-      console.log('** skipping (1)', href);
+    if (!href) {
       continue;
     }
-
-    // TODO: deal with relative paths
-    // ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
-    if (href.startsWith('/') && isCurrentPageExcluded) {
-      console.log('** skipping (2)', href);
-      continue;
-    }
-
-    let newHref = '';
-    if (href.startsWith('/')) {
-      newHref = `${constants.MENLO_URL}${href}`;
-    } else {
-      newHref = `${constants.MENLO_URL}/${href}`;
-    }
+    const newHref = getNewHref(href, excludeType, excludePatterns, isCurrentPageExcluded);
 
     links[i].setAttribute('href', newHref);
   }
 };
+
+export function getNewHref(
+  currentHref: string,
+  excludeType: ExcludeType,
+  excludePatterns: string[],
+  isCurrentPageExcluded: boolean,
+): string {
+  if (
+    !currentHref ||
+    currentHref.startsWith(constants.MENLO_URL) ||
+    constants.BLACKLISTED_PREFIXES.some((prefix) => currentHref.startsWith(prefix)) ||
+    isExcluded(currentHref, excludeType, excludePatterns)
+  ) {
+    console.log('** skipping (1)', currentHref);
+    return currentHref;
+  }
+
+  if (currentHref.startsWith('/') && isCurrentPageExcluded) {
+    console.log('** skipping (2)', currentHref);
+    return currentHref;
+  }
+
+  if (currentHref.startsWith('/')) {
+    return `${constants.MENLO_URL}${currentHref}`;
+  } else {
+    return `${constants.MENLO_URL}/${currentHref}`;
+  }
+}
 
 export const updateBadgeText = async (on: boolean) => {
   const text = on ? 'ON' : '';
