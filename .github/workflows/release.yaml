@@ -5,7 +5,7 @@ on:
     inputs:
       version:
         required: true
-        description: 'Version to release'
+        description: 'Version to release (ex input. 1.2.3)'
 
 permissions:
   contents: write
