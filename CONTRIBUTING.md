@@ -50,6 +50,12 @@ Refresh manually when updated.
 pnpm build
 ```
 
+### Test
+```sh
+# Unit test with jest
+pnpm test
+```
+
 ### Release
 
 Push a tag with `v` prefix to build (ex. `v1.2.3`)
