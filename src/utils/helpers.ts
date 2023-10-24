@@ -79,7 +79,10 @@ export function getNewHref(
     return currentHref;
   }
 
-  if (currentHref.startsWith('/') && (isCurrentPageExcluded || currentHref === '/')) {
+  if (
+    currentHref.startsWith('/') &&
+    (isCurrentPageExcluded || currentHref === '/')
+  ) {
     console.log('** skipping (2)', currentHref);
     return currentHref;
   }
