@@ -5,12 +5,12 @@
   "description": "Open links via Menlo Security",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "dev": "webpack --watch --progress --config webpack.dev.js --env stage=dev",
     "build": "webpack --progress --config webpack.prod.js --env stage=prod",
     "format:check": "prettier --check .",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx src",
-    "test": "jest",
-    "start": "webpack --watch --progress --config webpack.dev.js --env stage=dev"
+    "test": "jest"
   },
   "devDependencies": {
     "@ant-design/icons": "^5.2.6",

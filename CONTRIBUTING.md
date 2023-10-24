@@ -37,7 +37,7 @@ You can check `blame.ignoreRevsFile` config with `git config --list --local`
 
 ### Run locally
 ```sh
-pnpm start
+pnpm dev
 ```
 run locally.
 
