@@ -36,5 +36,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
   - safari
 - [ ] change dev icon / name
 - [ ] neatly print log..
+- etc
+  - [ ] ignore cmd+s(save) on option page
 - Fix known issues
   - link starts with double slash(ex. `//example.com`)
