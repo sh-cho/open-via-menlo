@@ -1,99 +1,30 @@
+import { ExcludeType } from '~/recoil/atoms/excludeSetting';
+
 import { constants } from './constants';
 import { getNewHref } from './helpers';
 
 const PREPEND_URL = constants.MENLO_URL;
 
-// TODO(vince): sort out.. how can I use parameterized test?
-// maybe ts-jest?
-
 // XXX: how to test with browser?
+// XXX: better test structure?
 
-test('Exclude test - domain', () => {
-  const excludeType = 'domain';
-  const excludePatterns = ['google.com', 'kakaocorp.com'];
-  const isCurrentPageExcluded = false;
-
-  const href = 'https://google.com';
-  const newHref = getNewHref(
-    href,
-    excludeType,
-    excludePatterns,
-    isCurrentPageExcluded,
-  );
-  expect(newHref).toBe(href);
-});
-
-test('Prepend test - domain', () => {
-  const excludeType = 'domain';
-  const excludePatterns = ['google.com', 'kakaocorp.com'];
-  const isCurrentPageExcluded = false;
-
-  const href = 'https://example.com';
-  const newHref = getNewHref(
-    href,
-    excludeType,
-    excludePatterns,
-    isCurrentPageExcluded,
-  );
-  expect(newHref).toBe(`${PREPEND_URL}/${href}`);
-});
-
-test('href starts with slash (isCurrentPageExcluded: true)', () => {
-  const excludeType = 'domain';
-  const excludePatterns = ['google.com', 'kakaocorp.com'];
-  const isCurrentPageExcluded = true;
-
-  const href = '/test';
-  const newHref = getNewHref(
-    href,
-    excludeType,
-    excludePatterns,
-    isCurrentPageExcluded,
-  );
-  expect(newHref).toBe(href);
-});
-
-test('href starts with slash (isCurrentPageExcluded: false)', () => {
-  const excludeType = 'domain';
-  const excludePatterns = ['google.com', 'kakaocorp.com'];
-  const isCurrentPageExcluded = false;
-
-  const href = '/test';
-  const newHref = getNewHref(
-    href,
-    excludeType,
-    excludePatterns,
-    isCurrentPageExcluded,
-  );
-  expect(newHref).toBe(`${PREPEND_URL}${href}`);
-});
-
-test('link with only slash (isCurrentPageExcluded: true)', () => {
-  const excludeType = 'domain';
-  const excludePatterns = ['google.com', 'kakaocorp.com'];
-  const isCurrentPageExcluded = true;
-
-  const href = '/';
-  const newHref = getNewHref(
-    href,
-    excludeType,
-    excludePatterns,
-    isCurrentPageExcluded,
-  );
-  expect(newHref).toBe(href);
-});
-
-test('link with only slash (isCurrentPageExcluded: false)', () => {
-  const excludeType = 'domain';
-  const excludePatterns = ['google.com', 'kakaocorp.com'];
-  const isCurrentPageExcluded = false;
-
-  const href = '/';
-  const newHref = getNewHref(
-    href,
-    excludeType,
-    excludePatterns,
-    isCurrentPageExcluded,
-  );
-  expect(newHref).toBe(`${PREPEND_URL}${href}`);
+// About formatting parameters(ex. %p)
+// ref: https://jestjs.io/docs/api#1-describeeachtablename-fn-timeout
+describe('getNewHref', () => {
+  it.each([
+    ['domain', ['google.com', 'kakaocorp.com'], false, 'https://google.com', 'https://google.com'],
+    ['domain', ['google.com', 'kakaocorp.com'], false, 'https://example.com', `${PREPEND_URL}/https://example.com`],
+    ['domain', ['google.com', 'kakaocorp.com'], false, '/test', `${PREPEND_URL}/test`],
+    ['domain', ['google.com', 'kakaocorp.com'], true, '/test', '/test'],
+    ['domain', ['google.com', 'kakaocorp.com'], true, '/', '/'],
+    ['domain', ['google.com', 'kakaocorp.com'], false, '/', '/'],
+  ])("(excludeType: %s, excludePatterns: %p, isCurrentPageExcluded: %s) %s => %s", (excludeType: string, excludePatterns: string[], isCurrentPageExcluded: boolean, href: string, result: string) => {
+    const newHref = getNewHref(
+      href,
+      excludeType as ExcludeType,
+      excludePatterns,
+      isCurrentPageExcluded,
+    );
+    expect(newHref).toBe(result);
+  });
 });
