@@ -30,7 +30,6 @@ Open links via [Menlo Security](https://safe.menlosecurity.com/).
 See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## Todo
-- [ ] add test
 - [ ] handle SPA
 - [ ] multi browser support (-> how to do it automatically?)
   - firefox
