@@ -1,4 +1,20 @@
-import { Alert, Col, Divider, Form, Input, Radio, Row, Typography } from 'antd';
+import {
+  ClockCircleFilled,
+  GithubFilled,
+  TagFilled,
+  ToolFilled,
+} from '@ant-design/icons';
+import {
+  Alert,
+  Col,
+  Divider,
+  Form,
+  Input,
+  Radio,
+  Row,
+  Tag,
+  Typography,
+} from 'antd';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RecoilRoot, useRecoilState } from 'recoil';
@@ -106,6 +122,28 @@ export const Options: React.FC<EmptyProps> = () => {
           />
         </Form.Item>
       </Form>
+      <Divider />
+      <Row>
+        <Col span={4} />
+        <Col span={16} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          {process.env.STAGE === 'dev' && (
+            <>
+              <Tag icon={<ToolFilled />} color="error">
+                dev
+              </Tag>
+              <Tag icon={<GithubFilled />}>{process.env.COMMIT_HASH}</Tag>
+              <Tag icon={<ClockCircleFilled />}>{process.env.COMMIT_DATE}</Tag>
+            </>
+          )}
+          <a
+            href={`https://github.com/sh-cho/open-via-menlo/releases/tag/v${process.env.VERSION}`}
+          >
+            <Tag icon={<TagFilled />} color="processing">
+              v{process.env.VERSION}
+            </Tag>
+          </a>
+        </Col>
+      </Row>
     </>
   );
 };

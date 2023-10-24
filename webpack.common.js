@@ -53,12 +53,13 @@ module.exports = {
       process: 'process/browser.js',
     }),
     new webpack.EnvironmentPlugin({
-      stage: JSON.stringify(process.env.stage) || 'dev',
-      commitHash: childProcess
+      STAGE: JSON.stringify(process.env.stage) || 'dev',
+      VERSION: process.env.npm_package_version,
+      COMMIT_HASH: childProcess
         .execSync('git rev-parse --short HEAD')
         .toString()
         .trim(),
-      commitDate: childProcess
+      COMMIT_DATE: childProcess
         .execSync('git show -s --format=%ci')
         .toString()
         .trim(),
