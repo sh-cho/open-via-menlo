@@ -7,7 +7,7 @@ import { constants } from './constants';
 // const getRootDomain = (url: string) =>
 //   new URL(url).hostname.split('.').slice(-2).join('.');
 
-const isExcluded = (
+export const isExcluded = (
   url: string,
   excludeType: string,
   excludePatterns: string[],

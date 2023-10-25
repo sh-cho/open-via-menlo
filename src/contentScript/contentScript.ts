@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 import { ExcludeSetting } from '~/recoil/atoms/excludeSetting';
 import { constants } from '~/utils/constants';
-import { getNewHref, prependAllLinks } from '~/utils/helpers';
+import { getNewHref, isExcluded, prependAllLinks } from '~/utils/helpers';
 
 /// XXX: How to reduce duplicated code?
 (async () => {
@@ -45,6 +45,11 @@ const observer = new MutationObserver(async (mutationRecords) => {
     if (!autoReplaceEnabled) {
       return;
     }
+    const isCurrentPageExcluded = isExcluded(
+      window.location.href,
+      excludeType,
+      excludePatterns,
+    );
 
     // empty string or string starting with # will be ignored
     const excludePatternsFiltered = excludePatterns.filter(
@@ -73,7 +78,7 @@ const observer = new MutationObserver(async (mutationRecords) => {
             href,
             excludeType,
             excludePatternsFiltered,
-            false,
+            isCurrentPageExcluded,
           );
           anchor.setAttribute('href', newHref);
 
