@@ -5,8 +5,8 @@
   "description": "Open links via Menlo Security",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "dev": "webpack --watch --progress --config webpack.dev.js --env stage=dev",
-    "build": "webpack --progress --config webpack.prod.js --env stage=prod",
+    "dev": "webpack --watch --progress --config webpack.dev.js",
+    "build": "webpack --progress --config webpack.prod.js",
     "format:check": "prettier --check .",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx src",
@@ -36,6 +36,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
+    "dotenv-webpack": "^8.0.1",
     "eslint": "^8.51.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.0.0",

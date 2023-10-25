@@ -52,8 +52,9 @@ module.exports = {
     new webpack.ProvidePlugin({
       process: 'process/browser.js',
     }),
+    // new Dotenv(),
     new webpack.EnvironmentPlugin({
-      STAGE: JSON.stringify(process.env.stage) || 'dev',
+      // STAGE: JSON.stringify(process.env.stage),
       VERSION: process.env.npm_package_version,
       COMMIT_HASH: childProcess
         .execSync('git rev-parse --short HEAD')

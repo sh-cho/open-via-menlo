@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires, import/extensions */
+const Dotenv = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const { merge } = require('webpack-merge');
 
@@ -18,4 +19,9 @@ module.exports = merge(common, {
       }),
     ],
   },
+  plugins: [
+    new Dotenv({
+      path: './.env.prod',
+    }),
+  ],
 });
