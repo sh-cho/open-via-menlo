@@ -55,6 +55,7 @@ export const prependAllLinks = async (
       excludeType,
       excludePatterns,
       isCurrentPageExcluded,
+      window.location.origin,
     );
 
     links[i].setAttribute('href', newHref);
@@ -62,36 +63,39 @@ export const prependAllLinks = async (
 };
 
 export function getNewHref(
-  currentHref: string,
+  href: string,
   excludeType: ExcludeType,
   excludePatterns: string[],
   isCurrentPageExcluded: boolean,
+  origin: string | undefined, // need only if `isCurrentPageExcluded` is false
 ): string {
   if (
-    !currentHref ||
-    currentHref.startsWith(constants.MENLO_URL) ||
-    constants.BLACKLISTED_PREFIXES.some((prefix) =>
-      currentHref.startsWith(prefix),
-    ) ||
-    isExcluded(currentHref, excludeType, excludePatterns)
+    !href ||
+    href.startsWith(constants.MENLO_URL) ||
+    constants.BLACKLISTED_PREFIXES.some((prefix) => href.startsWith(prefix)) ||
+    isExcluded(href, excludeType, excludePatterns)
   ) {
-    console.log('** skipping (1)', currentHref);
-    return currentHref;
+    console.log('** skipping (1)', href);
+    return href;
   }
 
-  if (
-    currentHref.startsWith('/') &&
-    (isCurrentPageExcluded || currentHref === '/')
-  ) {
-    console.log('** skipping (2)', currentHref);
-    return currentHref;
+  // normal link
+  if (!href.startsWith('/')) {
+    return `${constants.MENLO_URL}/${href}`;
   }
 
-  if (currentHref.startsWith('/')) {
-    return `${constants.MENLO_URL}${currentHref}`;
+  // starting with '/' && not excluded
+  if (!isCurrentPageExcluded) {
+    let newHref = constants.MENLO_URL;
+    if (origin) {
+      newHref += `/${origin}`;
+    }
+    newHref += href;
+    return newHref;
   }
 
-  return `${constants.MENLO_URL}/${currentHref}`;
+  // /**
+  return href;
 }
 
 export const updateBadgeText = async (on: boolean) => {

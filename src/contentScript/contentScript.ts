@@ -79,6 +79,7 @@ const observer = new MutationObserver(async (mutationRecords) => {
             excludeType,
             excludePatternsFiltered,
             isCurrentPageExcluded,
+            window.location.origin,
           );
           anchor.setAttribute('href', newHref);
 

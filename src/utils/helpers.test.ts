@@ -8,10 +8,15 @@ const PREPEND_URL = constants.MENLO_URL;
 // XXX: how to test with browser?
 // XXX: better test structure?
 
+// const CURRENT_URL_EXCLUDED = 'https://google.com';
+const CURRENT_URL_NOT_EXCLUDED = 'https://abcde.com';
+
 // About formatting parameters(ex. %p)
 // ref: https://jestjs.io/docs/api#1-describeeachtablename-fn-timeout
 describe('getNewHref', () => {
   it.each([
+    ['domain', ['google.com', 'kakaocorp.com'], true, '/test', '/test'],
+    ['domain', ['google.com', 'kakaocorp.com'], true, '/', '/'],
     [
       'domain',
       ['google.com', 'kakaocorp.com'],
@@ -30,12 +35,18 @@ describe('getNewHref', () => {
       'domain',
       ['google.com', 'kakaocorp.com'],
       false,
-      '/test',
-      `${PREPEND_URL}/test`,
+      '/',
+      `${PREPEND_URL}/${CURRENT_URL_NOT_EXCLUDED}/`,
     ],
-    ['domain', ['google.com', 'kakaocorp.com'], true, '/test', '/test'],
-    ['domain', ['google.com', 'kakaocorp.com'], true, '/', '/'],
-    ['domain', ['google.com', 'kakaocorp.com'], false, '/', '/'],
+    [
+      'domain',
+      ['google.com', 'kakaocorp.com'],
+      false,
+      '/test/123',
+      `${PREPEND_URL}/${CURRENT_URL_NOT_EXCLUDED}/test/123`,
+    ],
+    ['domain', ['google.com', 'kakaocorp.com'], false, '#', '#'],
+    ['domain', ['google.com', 'kakaocorp.com'], false, '#test', '#test'],
   ])(
     '(excludeType: %s, excludePatterns: %p, isCurrentPageExcluded: %s) %s => %s',
     (
@@ -50,6 +61,7 @@ describe('getNewHref', () => {
         excludeType as ExcludeType,
         excludePatterns,
         isCurrentPageExcluded,
+        isCurrentPageExcluded ? undefined : CURRENT_URL_NOT_EXCLUDED,
       );
       expect(newHref).toBe(result);
     },
