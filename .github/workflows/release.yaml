@@ -67,7 +67,7 @@ jobs:
         run: |
           sed -i 's/"version": "[^"]*"/"version": "${{ inputs.version }}"/g' package.json src/static/manifest.json
           git add .
-          git commit -m "Set version to ${{ inputs.version }}"
+          git commit -m "Prepare release ${{ inputs.version }}"
           git tag v${{ inputs.version }}
           git push --atomic origin HEAD v${{ inputs.version }}
 
