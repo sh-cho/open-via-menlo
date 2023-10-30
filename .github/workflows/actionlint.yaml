@@ -1,4 +1,4 @@
-name: Lint GitHub Actions workflows
+name: actionlint
 on: [push, pull_request]
 
 jobs:
