@@ -21,7 +21,7 @@
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.23.2",
-    "@types/chrome": "^0.0.267",
+    "@types/chrome": "^0.0.268",
     "@types/eslint": "^8.44.4",
     "@types/jest": "^29.5.5",
     "@types/lodash": "^4.14.199",
