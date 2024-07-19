@@ -14,10 +14,11 @@ Use vscode and install extensions below (see [`/.vscode/extensions.json`](/.vsco
 > on Mac
 
 ```sh
-nvm install
-nvm use
+mise use node@{version}
 ```
-1. install node (ex. with [nvm](https://github.com/nvm-sh/nvm)(Node Version Manager))
+1. install node (ex. with [mise](https://github.com/jdx/mise))
+
+Node version should be matched with package.json engines field.
 
 ```sh
 corepack enable pnpm
