@@ -34,7 +34,7 @@ devDependencies:
     version: 0.0.270
   '@types/eslint':
     specifier: ^8.44.4
-    version: 8.56.11
+    version: 8.56.12
   '@types/jest':
     specifier: ^29.5.5
     version: 29.5.12
@@ -2298,8 +2298,8 @@ packages:
       '@types/har-format': 1.2.15
     dev: true
 
-  /@types/eslint@8.56.11:
-    resolution: {integrity: sha512-sVBpJMf7UPo/wGecYOpk2aQya2VUGeHhe38WG7/mN5FufNSubf5VT9Uh9Uyp8/eLJpu1/tuhJ/qTo4mhSB4V4Q==}
+  /@types/eslint@8.56.12:
+    resolution: {integrity: sha512-03ruubjWyOHlmljCVoxSuNDdmfZDzsrrz0P2LeJsOXr+ZwFQ+0yQIwNCwt/GYhV7Z31fgtXJTAEs+FYlEL851g==}
     dependencies:
       '@types/estree': 1.0.5
       '@types/json-schema': 7.0.15
