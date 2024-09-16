@@ -30,8 +30,8 @@ devDependencies:
     specifier: ^7.23.2
     version: 7.24.7(@babel/core@7.25.2)
   '@types/chrome':
-    specifier: ^0.0.270
-    version: 0.0.270
+    specifier: ^0.0.271
+    version: 0.0.271
   '@types/eslint':
     specifier: ^8.44.4
     version: 8.56.12
@@ -2296,8 +2296,8 @@ packages:
       '@babel/types': 7.25.2
     dev: true
 
-  /@types/chrome@0.0.270:
-    resolution: {integrity: sha512-ADvkowV7YnJfycZZxL2brluZ6STGW+9oKG37B422UePf2PCXuFA/XdERI0T18wtuWPx0tmFeZqq6MOXVk1IC+Q==}
+  /@types/chrome@0.0.271:
+    resolution: {integrity: sha512-K0qgXvkwA5ic+/eygF1xiypHEvCoBgH5lwrhg3yva2mqJuCWyYm0vpZQ22GksAxgGfo0PWev9Zx3plp2clMlwg==}
     dependencies:
       '@types/filesystem': 0.0.35
       '@types/har-format': 1.2.15
