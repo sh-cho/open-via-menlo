@@ -35,7 +35,7 @@ jobs:
         with:
           node-version-file: 'package.json'
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v4
         name: Install pnpm
         id: pnpm-install
         with:
@@ -76,7 +76,7 @@ jobs:
         with:
           args: zip -qq -r v${{ inputs.version }}.zip dist
 
-      - uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v2
         with:
           name: v${{ inputs.version }}
           files: |
