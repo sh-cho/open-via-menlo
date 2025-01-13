@@ -33,8 +33,8 @@ importers:
         specifier: ^7.23.2
         version: 7.26.0(@babel/core@7.26.0)
       '@types/chrome':
-        specifier: ^0.0.289
-        version: 0.0.289
+        specifier: ^0.0.293
+        version: 0.0.293
       '@types/eslint':
         specifier: ^8.44.4
         version: 8.56.12
@@ -1107,8 +1107,8 @@ packages:
   '@types/babel__traverse@7.20.5':
     resolution: {integrity: sha512-WXCyOcRtH37HAUkpXhUduaxdm82b4GSlyTqajXviN4EfiuPgNYR109xMCKvpl6zPIpua0DGlMEDCq+g8EdoheQ==}
 
-  '@types/chrome@0.0.289':
-    resolution: {integrity: sha512-JQifH2d4TFeIZ+ySBSQxCd4D+J6W0jIAyQipAzG1up4O7WApTYrBqnmpNbMqFR5f70wJ1FE6+axqtpfTtPzy/g==}
+  '@types/chrome@0.0.293':
+    resolution: {integrity: sha512-pghCOLVHsnePWcMEHCxkAfMRx8qJWmj4lUoyF3ZpANniKz8AucIGLSld7smsrTdLUkk/p5JjOCGVDRdUDHx+uA==}
 
   '@types/eslint@8.56.12':
     resolution: {integrity: sha512-03ruubjWyOHlmljCVoxSuNDdmfZDzsrrz0P2LeJsOXr+ZwFQ+0yQIwNCwt/GYhV7Z31fgtXJTAEs+FYlEL851g==}
@@ -5394,7 +5394,7 @@ snapshots:
     dependencies:
       '@babel/types': 7.25.8
 
-  '@types/chrome@0.0.289':
+  '@types/chrome@0.0.293':
     dependencies:
       '@types/filesystem': 0.0.35
       '@types/har-format': 1.2.15
