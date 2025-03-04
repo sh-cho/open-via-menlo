@@ -35,7 +35,7 @@
     "babel-jest": "^29.7.0",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^13.0.0",
-    "css-loader": "^6.8.1",
+    "css-loader": "^7.0.0",
     "dotenv-webpack": "^8.0.1",
     "eslint": "^8.51.0",
     "eslint-config-airbnb": "^19.0.4",
