@@ -28,7 +28,7 @@
     "@types/eslint": "^9.6.1",
     "@types/jest": "^30.0.0",
     "@types/lodash": "^4.17.16",
-    "@types/minimatch": "^5.1.2",
+    "@types/minimatch": "^6.0.0",
     "@types/node": "^22.13.10",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
