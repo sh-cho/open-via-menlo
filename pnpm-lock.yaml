@@ -73,7 +73,7 @@ importers:
         version: 8.39.1(eslint@9.33.0)(typescript@5.9.2)
       antd:
         specifier: ^5.24.3
-        version: 5.27.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        version: 5.27.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       babel-jest:
         specifier: ^30.0.0
         version: 30.0.5(@babel/core@7.28.3)
@@ -1542,8 +1542,8 @@ packages:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
 
-  antd@5.27.0:
-    resolution: {integrity: sha512-o54dmpooLOc08RSGCkeEQBYAGPxUSmnhmYJKCNTHH46vzjOVxdteu+wPTRVkRbAkDTbs2VcNr5VL7Lu67rPIiA==}
+  antd@5.27.1:
+    resolution: {integrity: sha512-jGMSdBN7hAMvPV27B4RhzZfL6n6yu8yDbo7oXrlJasaOqB7bSDPcjdEy1kXy3JPsny/Qazb1ykzRI4EfcByAPQ==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
@@ -5787,7 +5787,7 @@ snapshots:
 
   ansi-styles@6.2.1: {}
 
-  antd@5.27.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+  antd@5.27.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       '@ant-design/colors': 7.2.1
       '@ant-design/cssinjs': 1.24.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
