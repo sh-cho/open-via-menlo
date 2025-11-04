@@ -29,7 +29,7 @@
     "@types/jest": "^30.0.0",
     "@types/lodash": "^4.17.16",
     "@types/minimatch": "^6.0.0",
-    "@types/node": "^22.13.10",
+    "@types/node": "^24.0.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@typescript-eslint/eslint-plugin": "^8.26.1",
@@ -68,7 +68,7 @@
     "webpack-merge": "^6.0.1"
   },
   "engines": {
-    "node": ">=22.0.0 <23.0.0"
+    "node": ">=22.0.0 <25.0.0"
   },
   "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd"
 }
