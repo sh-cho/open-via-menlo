@@ -21,7 +21,7 @@
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.26.0",
-    "@eslint/compat": "^1.2.7",
+    "@eslint/compat": "^2.0.0",
     "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.22.0",
     "@types/chrome": "^0.1.0",
