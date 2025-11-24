@@ -73,7 +73,7 @@ importers:
         version: 8.47.0(eslint@9.39.1)(typescript@5.9.3)
       antd:
         specifier: ^5.24.3
-        version: 5.29.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 5.29.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       babel-jest:
         specifier: ^30.0.0
         version: 30.2.0(@babel/core@7.28.5)
@@ -1541,8 +1541,8 @@ packages:
     resolution: {integrity: sha512-4Dj6M28JB+oAH8kFkTLUo+a2jwOFkuqb3yucU0CANcRRUbxS0cP0nZYCGjcc3BNXwRIsUVmDGgzawme7zvJHvg==}
     engines: {node: '>=12'}
 
-  antd@5.29.0:
-    resolution: {integrity: sha512-TQEQTID1x77nuoZ6EO56CBPFaZXbdcxWIGw32QIV2T+U/I75bLK0X9diboi0Bnce+uEM+t4+H20y09PGqybshQ==}
+  antd@5.29.1:
+    resolution: {integrity: sha512-TTFVbpKbyL6cPfEoKq6Ya3BIjTUr7uDW9+7Z+1oysRv1gpcN7kQ4luH8r/+rXXwz4n6BIz1iBJ1ezKCdsdNW0w==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
@@ -5851,7 +5851,7 @@ snapshots:
 
   ansi-styles@6.2.3: {}
 
-  antd@5.29.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  antd@5.29.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       '@ant-design/colors': 7.2.1
       '@ant-design/cssinjs': 1.24.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
