@@ -127,7 +127,7 @@ importers:
         version: 4.17.23
       minimatch:
         specifier: ^10.0.1
-        version: 10.2.3
+        version: 10.2.4
       prettier:
         specifier: ^3.5.3
         version: 3.8.1
@@ -3194,8 +3194,8 @@ packages:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
 
-  minimatch@10.2.3:
-    resolution: {integrity: sha512-Rwi3pnapEqirPSbWbrZaa6N3nmqq4Xer/2XooiOKyV3q12ML06f7MOuc5DVH8ONZIFhwIYQ3yzPH4nt7iWHaTg==}
+  minimatch@10.2.4:
+    resolution: {integrity: sha512-oRjTw/97aTBN0RHbYCdtF1MQfvusSIBQM0IZEgzl6426+8jSC0nF1a/GmnVLpfB9yyr6g6FTqWqiZVbxrtaCIg==}
     engines: {node: 18 || 20 || >=22}
 
   minimatch@3.1.5:
@@ -5040,7 +5040,7 @@ snapshots:
     dependencies:
       '@eslint/object-schema': 3.0.2
       debug: 4.4.3
-      minimatch: 10.2.3
+      minimatch: 10.2.4
     transitivePeerDependencies:
       - supports-color
 
@@ -5773,7 +5773,7 @@ snapshots:
 
   '@types/minimatch@6.0.0':
     dependencies:
-      minimatch: 10.2.3
+      minimatch: 10.2.4
 
   '@types/node@24.10.13':
     dependencies:
@@ -6969,7 +6969,7 @@ snapshots:
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       json-stable-stringify-without-jsonify: 1.0.1
-      minimatch: 10.2.3
+      minimatch: 10.2.4
       natural-compare: 1.4.0
       optionator: 0.9.4
     transitivePeerDependencies:
@@ -7927,7 +7927,7 @@ snapshots:
 
   mimic-fn@2.1.0: {}
 
-  minimatch@10.2.3:
+  minimatch@10.2.4:
     dependencies:
       brace-expansion: 5.0.4
 
