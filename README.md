@@ -20,6 +20,9 @@
 
 Open links via [Menlo Security](https://safe.menlosecurity.com/).
 
+> [!NOTE]
+> This is an **unofficial** extension. It is not affiliated with, endorsed by, or produced by Menlo Security.
+
 (Only supports chrome, for now)
 
 ## How to use

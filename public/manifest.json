@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Open via Menlo",
-  "description": "Open links via Menlo Security",
+  "description": "Unofficial helper to open links via Menlo Security. Not affiliated with Menlo Security.",
   "version": "1.4.0",
   "permissions": ["contextMenus", "storage", "tabs"],
   "icons": {

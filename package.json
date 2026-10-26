@@ -2,7 +2,7 @@
   "name": "open-via-menlo",
   "version": "1.4.0",
   "private": true,
-  "description": "Open links via Menlo Security",
+  "description": "Unofficial helper to open links via Menlo Security. Not affiliated with Menlo Security.",
   "type": "module",
   "scripts": {
     "dev": "vite build --watch --mode development",
