@@ -24,9 +24,7 @@ export const onInstalledListener = async () => {
   });
 };
 
-export const onClickedListener = async (
-  data: chrome.contextMenus.OnClickData,
-) => {
+export const onClickedListener = async (data: chrome.contextMenus.OnClickData) => {
   switch (data.menuItemId) {
     case MENU_IDS.OPEN_VIA_MENLO: {
       const newUrl = `${constants.MENLO_URL}/${data.linkUrl || data.pageUrl}`;

@@ -7,11 +7,7 @@ import type { ExcludeType } from './types';
 export const getActivePatterns = (patterns: string[]): string[] =>
   patterns.map((p) => p.trim()).filter((p) => p && !p.startsWith('#'));
 
-const matches = (
-  url: string,
-  excludeType: ExcludeType,
-  pattern: string,
-): boolean => {
+const matches = (url: string, excludeType: ExcludeType, pattern: string): boolean => {
   switch (excludeType) {
     case 'domain':
       // XXX: not accurate (substring match)
@@ -29,11 +25,8 @@ const matches = (
   }
 };
 
-export const isExcluded = (
-  url: string,
-  excludeType: ExcludeType,
-  patterns: string[],
-): boolean => patterns.some((pattern) => matches(url, excludeType, pattern));
+export const isExcluded = (url: string, excludeType: ExcludeType, patterns: string[]): boolean =>
+  patterns.some((pattern) => matches(url, excludeType, pattern));
 
 export function getNewHref(
   href: string,
@@ -70,11 +63,7 @@ export const prependLinks = (
   excludeType: ExcludeType,
   excludePatterns: string[],
 ): void => {
-  const isCurrentPageExcluded = isExcluded(
-    window.location.href,
-    excludeType,
-    excludePatterns,
-  );
+  const isCurrentPageExcluded = isExcluded(window.location.href, excludeType, excludePatterns);
 
   for (const anchor of anchors) {
     const href = anchor.getAttribute('href');

@@ -61,7 +61,9 @@ for s in 16 32 48 128; do rsvg-convert -w $s -h $s assets/icon.svg -o public/ico
 ```
 
 ## references
+
 ### chrome api docs
+
 - MV3: https://developer.chrome.com/docs/extensions/mv3/
   - Message passing: https://developer.chrome.com/docs/extensions/mv3/messaging/
 - API Reference: https://developer.chrome.com/docs/extensions/reference/
@@ -69,8 +71,10 @@ for s in 16 32 48 128; do rsvg-convert -w $s -h $s assets/icon.svg -o public/ico
   - chrome.action: https://developer.chrome.com/docs/extensions/reference/action/
 
 ### codes
+
 - react chrome-extension boilerplate: https://github.com/JasonXian/react-chrome-extension-boilerplate
 - bitwarden browser extensions: https://github.com/bitwarden/clients/tree/master/apps/browser
 
 ### 참고자료
+
 - chrome extension 개발기: https://80000coding.oopy.io/34a2083b-c159-4524-b5f2-750d3ab4fbba

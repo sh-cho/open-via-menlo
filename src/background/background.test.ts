@@ -27,9 +27,7 @@ describe('background', () => {
   });
 
   it('throttles saves and keeps the latest value', () => {
-    const settings = [1, 2, 3].map((revision) =>
-      Object.assign({}, DEFAULT_SETTING, { revision }),
-    );
+    const settings = [1, 2, 3].map((revision) => Object.assign({}, DEFAULT_SETTING, { revision }));
     settings.forEach((s) => onMessage({ [KEY]: s }));
     vi.advanceTimersByTime(2000);
 

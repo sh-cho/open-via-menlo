@@ -31,10 +31,7 @@ export default defineConfig(({ mode }) => ({
       input: {
         popup: resolve(import.meta.dirname, 'src/popup/index.html'),
         options: resolve(import.meta.dirname, 'src/options/index.html'),
-        background: resolve(
-          import.meta.dirname,
-          'src/background/background.ts',
-        ),
+        background: resolve(import.meta.dirname, 'src/background/background.ts'),
       },
       output: {
         entryFileNames: ({ name }) =>

@@ -17,9 +17,7 @@ const collectAnchors = (records: MutationRecord[]): HTMLAnchorElement[] => {
 };
 
 const main = async () => {
-  const setting = (await chrome.storage.sync.get(KEY))[KEY] as
-    | ExcludeSetting
-    | undefined;
+  const setting = (await chrome.storage.sync.get(KEY))[KEY] as ExcludeSetting | undefined;
   // Setting changes require page refresh, so read once.
   if (!setting?.autoReplaceEnabled) return;
 

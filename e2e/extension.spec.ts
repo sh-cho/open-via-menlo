@@ -20,14 +20,10 @@ test.beforeEach(async ({ context }) => {
   );
 });
 
-const hrefOf = (page: Page, id: string) =>
-  page.locator(`#${id}`).getAttribute('href');
+const hrefOf = (page: Page, id: string) => page.locator(`#${id}`).getAttribute('href');
 
 test.describe('content script', () => {
-  test('does not touch links when disabled', async ({
-    context,
-    saveSetting,
-  }) => {
+  test('does not touch links when disabled', async ({ context, saveSetting }) => {
     await saveSetting({ autoReplaceEnabled: false });
     const page = await context.newPage();
     await page.goto(`${SITE}/`);
@@ -44,10 +40,7 @@ test.describe('content script', () => {
     const page = await context.newPage();
     await page.goto(`${SITE}/`);
 
-    await expect(page.locator('#abs')).toHaveAttribute(
-      'href',
-      `${MENLO}/https://example.com/`,
-    );
+    await expect(page.locator('#abs')).toHaveAttribute('href', `${MENLO}/https://example.com/`);
     expect(await hrefOf(page, 'rel')).toBe(`${MENLO}/${SITE}/path`);
     expect(await hrefOf(page, 'excluded')).toBe('https://google.com/');
     expect(await hrefOf(page, 'hash')).toBe('#top');
@@ -58,25 +51,15 @@ test.describe('content script', () => {
     await saveSetting({ autoReplaceEnabled: true });
     const page = await context.newPage();
     await page.goto(`${SITE}/`);
-    await expect(page.locator('#abs')).toHaveAttribute(
-      'href',
-      /^https:\/\/safe\./,
-    );
+    await expect(page.locator('#abs')).toHaveAttribute('href', /^https:\/\/safe\./);
 
     await page.evaluate(() => {
-      document.querySelector('#slot')!.innerHTML =
-        '<a id="dyn" href="https://dyn.com/">dyn</a>';
+      document.querySelector('#slot')!.innerHTML = '<a id="dyn" href="https://dyn.com/">dyn</a>';
     });
-    await expect(page.locator('#dyn')).toHaveAttribute(
-      'href',
-      `${MENLO}/https://dyn.com/`,
-    );
+    await expect(page.locator('#dyn')).toHaveAttribute('href', `${MENLO}/https://dyn.com/`);
   });
 
-  test('keeps relative links on an excluded page', async ({
-    context,
-    saveSetting,
-  }) => {
+  test('keeps relative links on an excluded page', async ({ context, saveSetting }) => {
     await saveSetting({
       autoReplaceEnabled: true,
       excludePatterns: ['site.test'],
@@ -84,10 +67,7 @@ test.describe('content script', () => {
     const page = await context.newPage();
     await page.goto(`${SITE}/`);
 
-    await expect(page.locator('#abs')).toHaveAttribute(
-      'href',
-      `${MENLO}/https://example.com/`,
-    );
+    await expect(page.locator('#abs')).toHaveAttribute('href', `${MENLO}/https://example.com/`);
     expect(await hrefOf(page, 'rel')).toBe('/path');
   });
 
@@ -95,10 +75,7 @@ test.describe('content script', () => {
     ['regex', '^https://(www\\.)?google\\.com'],
     ['glob', 'https://google.com/**'],
   ] as const) {
-    test(`supports ${excludeType} exclusion`, async ({
-      context,
-      saveSetting,
-    }) => {
+    test(`supports ${excludeType} exclusion`, async ({ context, saveSetting }) => {
       await saveSetting({
         autoReplaceEnabled: true,
         excludeType,
@@ -107,22 +84,14 @@ test.describe('content script', () => {
       const page = await context.newPage();
       await page.goto(`${SITE}/`);
 
-      await expect(page.locator('#abs')).toHaveAttribute(
-        'href',
-        `${MENLO}/https://example.com/`,
-      );
+      await expect(page.locator('#abs')).toHaveAttribute('href', `${MENLO}/https://example.com/`);
       expect(await hrefOf(page, 'excluded')).toBe('https://google.com/');
     });
   }
 });
 
 test.describe('popup', () => {
-  test('toggles auto replace and badge', async ({
-    context,
-    extensionId,
-    sw,
-    loadSetting,
-  }) => {
+  test('toggles auto replace and badge', async ({ context, extensionId, sw, loadSetting }) => {
     const page = await context.newPage();
     await page.goto(`chrome-extension://${extensionId}/popup/index.html`);
 
@@ -131,12 +100,8 @@ test.describe('popup', () => {
 
     await toggle.click();
     await expect(toggle).toBeChecked();
-    await expect
-      .poll(async () => (await loadSetting())?.autoReplaceEnabled)
-      .toBe(true);
-    await expect
-      .poll(() => sw.evaluate(() => chrome.action.getBadgeText({})))
-      .toBe('ON');
+    await expect.poll(async () => (await loadSetting())?.autoReplaceEnabled).toBe(true);
+    await expect.poll(() => sw.evaluate(() => chrome.action.getBadgeText({}))).toBe('ON');
 
     // persisted across reopen
     await page.reload();
@@ -156,16 +121,10 @@ test.describe('popup', () => {
 });
 
 test.describe('options', () => {
-  test('saves exclude type and patterns', async ({
-    context,
-    extensionId,
-    loadSetting,
-  }) => {
+  test('saves exclude type and patterns', async ({ context, extensionId, loadSetting }) => {
     const page = await context.newPage();
     await page.goto(`chrome-extension://${extensionId}/options/index.html`);
-    await expect(
-      page.getByRole('heading', { name: 'Open-via-menlo options' }),
-    ).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Open-via-menlo options' })).toBeVisible();
 
     await page.getByText('Regex', { exact: true }).click();
     await page.getByRole('textbox').fill('google\\.com\n# comment');
@@ -176,9 +135,7 @@ test.describe('options', () => {
     });
 
     await page.reload();
-    await expect(page.getByRole('textbox')).toHaveValue(
-      'google\\.com\n# comment',
-    );
+    await expect(page.getByRole('textbox')).toHaveValue('google\\.com\n# comment');
   });
 });
 

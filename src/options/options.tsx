@@ -1,20 +1,5 @@
-import {
-  ClockCircleFilled,
-  GithubFilled,
-  TagFilled,
-  ToolFilled,
-} from '@ant-design/icons';
-import {
-  Alert,
-  Col,
-  Divider,
-  Form,
-  Input,
-  Radio,
-  Row,
-  Tag,
-  Typography,
-} from 'antd';
+import { ClockCircleFilled, GithubFilled, TagFilled, ToolFilled } from '@ant-design/icons';
+import { Alert, Col, Divider, Form, Input, Radio, Row, Tag, Typography } from 'antd';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -51,12 +36,7 @@ export const Options: React.FC<EmptyProps> = () => {
         </Col>
       </Row>
       <Divider />
-      <Form
-        layout="horizontal"
-        form={form}
-        labelCol={{ span: 4 }}
-        wrapperCol={{ span: 16 }}
-      >
+      <Form layout="horizontal" form={form} labelCol={{ span: 4 }} wrapperCol={{ span: 16 }}>
         <Form.Item
           label="Exclude Type"
           extra={
@@ -93,8 +73,7 @@ export const Options: React.FC<EmptyProps> = () => {
             <ul>
               <li>One per line</li>
               <li>
-                Line starting with <Text code>#</Text> or empty line will be
-                ignored
+                Line starting with <Text code>#</Text> or empty line will be ignored
               </li>
             </ul>
           }
@@ -124,9 +103,7 @@ export const Options: React.FC<EmptyProps> = () => {
               <Tag icon={<ClockCircleFilled />}>{__COMMIT_DATE__}</Tag>
             </>
           )}
-          <a
-            href={`https://github.com/sh-cho/open-via-menlo/releases/tag/v${__APP_VERSION__}`}
-          >
+          <a href={`https://github.com/sh-cho/open-via-menlo/releases/tag/v${__APP_VERSION__}`}>
             <Tag icon={<TagFilled />} color="processing">
               v{__APP_VERSION__}
             </Tag>

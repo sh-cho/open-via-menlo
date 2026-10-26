@@ -1,15 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": [
-    "typescript",
-    "unicorn",
-    "import",
-    "promise",
-    "react",
-    "jsx-a11y",
-    "vitest",
-    "oxc"
-  ],
+  "plugins": ["typescript", "unicorn", "import", "promise", "react", "jsx-a11y", "vitest", "oxc"],
   "categories": {
     "correctness": "error",
     "perf": "warn",
@@ -20,12 +11,7 @@
     "browser": true,
     "webextensions": true
   },
-  "ignorePatterns": [
-    "dist/**",
-    "coverage/**",
-    "playwright-report/**",
-    "test-results/**"
-  ],
+  "ignorePatterns": ["dist/**", "coverage/**", "playwright-report/**", "test-results/**"],
   "rules": {
     "no-console": "off",
     "no-unused-vars": "off",

@@ -14,8 +14,7 @@ const run = async (setting?: Partial<ExcludeSetting>) => {
   await new Promise((r) => setTimeout(r));
 };
 
-const hrefs = () =>
-  [...document.querySelectorAll('a')].map((a) => a.getAttribute('href'));
+const hrefs = () => [...document.querySelectorAll('a')].map((a) => a.getAttribute('href'));
 
 describe('contentScript', () => {
   afterEach(() => {
@@ -35,16 +34,12 @@ describe('contentScript', () => {
   });
 
   it('rewrites existing and dynamically added links', async () => {
-    document.body.innerHTML =
-      '<a href="https://example.com"></a><a href="https://google.com"></a>';
+    document.body.innerHTML = '<a href="https://example.com"></a><a href="https://google.com"></a>';
     await run({
       autoReplaceEnabled: true,
       excludePatterns: ['', '# c', 'google.com'],
     });
-    expect(hrefs()).toEqual([
-      `${MENLO}/https://example.com`,
-      'https://google.com',
-    ]);
+    expect(hrefs()).toEqual([`${MENLO}/https://example.com`, 'https://google.com']);
 
     const a = document.createElement('a');
     a.href = 'https://added.com/';

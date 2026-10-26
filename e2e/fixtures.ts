@@ -1,11 +1,6 @@
 import { resolve } from 'node:path';
 
-import {
-  type BrowserContext,
-  test as base,
-  chromium,
-  type Worker,
-} from '@playwright/test';
+import { type BrowserContext, test as base, chromium, type Worker } from '@playwright/test';
 
 import { constants } from '../src/utils/constants.ts';
 import { DEFAULT_SETTING, type ExcludeSetting } from '../src/utils/types.ts';
@@ -30,10 +25,7 @@ export const test = base.extend<{
     await context.close();
   },
   sw: async ({ context }, use) => {
-    await use(
-      context.serviceWorkers()[0] ??
-        (await context.waitForEvent('serviceworker')),
-    );
+    await use(context.serviceWorkers()[0] ?? (await context.waitForEvent('serviceworker')));
   },
   extensionId: async ({ sw }, use) => {
     await use(new URL(sw.url()).host);
@@ -49,10 +41,7 @@ export const test = base.extend<{
   loadSetting: async ({ sw }, use) => {
     await use(() =>
       sw.evaluate(
-        async (key) =>
-          (await chrome.storage.sync.get(key))[key] as
-            | ExcludeSetting
-            | undefined,
+        async (key) => (await chrome.storage.sync.get(key))[key] as ExcludeSetting | undefined,
         constants.STORAGE_SETTING_KEY,
       ),
     );

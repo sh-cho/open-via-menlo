@@ -14,9 +14,7 @@ export const stubChrome = (setting?: Partial<ExcludeSetting>) => {
     storage: {
       sync: {
         get: vi.fn(async (key: string) => ({ [key]: store[key] })),
-        set: vi.fn(async (items: Record<string, unknown>) =>
-          Object.assign(store, items),
-        ),
+        set: vi.fn(async (items: Record<string, unknown>) => Object.assign(store, items)),
       },
     },
     runtime: {
