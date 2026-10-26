@@ -1,6 +1,6 @@
 {
   "name": "open-via-menlo",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "private": true,
   "description": "Unofficial helper to open links via Menlo Security. Not affiliated with Menlo Security.",
   "type": "module",
