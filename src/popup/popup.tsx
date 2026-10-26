@@ -2,34 +2,29 @@ import { SettingFilled } from '@ant-design/icons';
 import { Button, Space, Switch, Typography } from 'antd';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { RecoilRoot, useRecoilState } from 'recoil';
 
-import {
-  ExcludeSetting,
-  excludeSettingState,
-} from '~/recoil/atoms/excludeSetting';
+import { useExcludeSetting } from '~/hooks/useExcludeSetting';
 import { updateBadgeText } from '~/utils/helpers';
-import { EmptyProps } from '~/utils/types';
+import type { EmptyProps } from '~/utils/types';
 
 import './popup.css';
 
 const { Text } = Typography;
 
 const App: React.FC<EmptyProps> = () => {
-  const [excludeSetting, setExcludeSetting] =
-    useRecoilState<ExcludeSetting>(excludeSettingState);
+  const [excludeSetting, setExcludeSetting] = useExcludeSetting();
 
   return (
-    <Space direction="vertical" style={{ display: 'flex' }}>
+    <Space orientation="vertical" style={{ display: 'flex' }}>
       <Space align="center">
         <Switch
           checked={excludeSetting.autoReplaceEnabled}
-          onChange={(checked, _event) => {
+          onChange={(checked) => {
             setExcludeSetting({
               ...excludeSetting,
               autoReplaceEnabled: checked,
             });
-            updateBadgeText(checked);
+            void updateBadgeText(checked);
           }}
         />
         <Text>Automatically replace all links</Text>
@@ -39,7 +34,7 @@ const App: React.FC<EmptyProps> = () => {
         <Button
           icon={<SettingFilled />}
           onClick={() => {
-            chrome.runtime.openOptionsPage();
+            void chrome.runtime.openOptionsPage();
           }}
         >
           Options
@@ -49,11 +44,8 @@ const App: React.FC<EmptyProps> = () => {
   );
 };
 
-const container = document.createElement('div');
-document.body.appendChild(container);
-const root = createRoot(container);
-root.render(
-  <RecoilRoot>
+createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
     <App />
-  </RecoilRoot>,
+  </React.StrictMode>,
 );

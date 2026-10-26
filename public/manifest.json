@@ -11,14 +11,15 @@
     "128": "icon-128.png"
   },
   "action": {
-    "default_popup": "popup.html",
-    "default_title": "open-via-menlo-extension",
+    "default_popup": "popup/index.html",
+    "default_title": "Open via Menlo",
     "default_icon": "icon-128.png"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
-  "options_page": "options.html",
+  "options_page": "options/index.html",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

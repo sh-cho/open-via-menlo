@@ -1,25 +1,19 @@
-import _ from 'lodash';
+import { throttle } from 'es-toolkit';
 
-import { ExcludeSetting } from '~/recoil/atoms/excludeSetting';
 import { constants } from '~/utils/constants';
 import { onClickedListener, onInstalledListener } from '~/utils/listeners';
+import type { ExcludeSetting } from '~/utils/types';
+
+const KEY = constants.STORAGE_SETTING_KEY;
 
 chrome.runtime.onInstalled.addListener(onInstalledListener);
 chrome.contextMenus.onClicked.addListener(onClickedListener);
 
-const saveThrottled = _.throttle((key: string, value: ExcludeSetting) => {
-  chrome.storage.sync.set({ [key]: value });
-  console.log('** saved', value);
+// `storage.sync` has write quota
+const saveThrottled = throttle((value: ExcludeSetting) => {
+  void chrome.storage.sync.set({ [KEY]: value });
 }, 2000);
 
-chrome.runtime.onMessage.addListener(
-  async (message, sender: chrome.runtime.MessageSender, _sendResponse) => {
-    console.log('🔎 Message received', message, sender);
-    // await updateBadgeText(message.url, message.on);
-
-    saveThrottled(
-      constants.STORAGE_SETTING_KEY,
-      message[constants.STORAGE_SETTING_KEY],
-    );
-  },
-);
+chrome.runtime.onMessage.addListener((message: Record<string, unknown>) => {
+  if (message[KEY]) saveThrottled(message[KEY] as ExcludeSetting);
+});

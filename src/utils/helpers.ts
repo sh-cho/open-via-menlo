@@ -1,66 +1,39 @@
 import { minimatch } from 'minimatch';
 
-import { ExcludeType } from '~/recoil/atoms/excludeSetting';
-
 import { constants } from './constants';
+import type { ExcludeType } from './types';
 
-// const getRootDomain = (url: string) =>
-//   new URL(url).hostname.split('.').slice(-2).join('.');
+/** Drops empty lines and `#` comments. */
+export const getActivePatterns = (patterns: string[]): string[] =>
+  patterns.map((p) => p.trim()).filter((p) => p && !p.startsWith('#'));
 
-export const isExcluded = (
+const matches = (
   url: string,
-  excludeType: string,
-  excludePatterns: string[],
+  excludeType: ExcludeType,
+  pattern: string,
 ): boolean => {
-  console.log('** isExcluded', url, excludeType, excludePatterns);
-
-  // XXX: better way to do this?
   switch (excludeType) {
     case 'domain':
-      // XXX: not accurate!
-      return excludePatterns.some((pattern) => url.includes(pattern));
-
+      // XXX: not accurate (substring match)
+      return url.includes(pattern);
     case 'regex':
-      // XXX: It's gonna be slow
-      return excludePatterns.some((pattern) => new RegExp(pattern).test(url));
-
+      try {
+        return new RegExp(pattern).test(url);
+      } catch {
+        return false; // ignore invalid regex
+      }
     case 'glob':
-      return excludePatterns.some((pattern) => minimatch(url, pattern));
-
+      return minimatch(url, pattern);
     default:
       return false;
   }
 };
 
-// TODO: enhance replace rules
-export const prependAllLinks = async (
+export const isExcluded = (
+  url: string,
   excludeType: ExcludeType,
-  excludePatterns: string[],
-): Promise<void> => {
-  // Get all anchor tags on the page
-  const links = document.getElementsByTagName('a');
-  const isCurrentPageExcluded = isExcluded(
-    window.location.href,
-    excludeType,
-    excludePatterns,
-  );
-
-  for (let i = 0; i < links.length; i++) {
-    const href = links[i].getAttribute('href');
-    if (!href) {
-      continue;
-    }
-    const newHref = getNewHref(
-      href,
-      excludeType,
-      excludePatterns,
-      isCurrentPageExcluded,
-      window.location.origin,
-    );
-
-    links[i].setAttribute('href', newHref);
-  }
-};
+  patterns: string[],
+): boolean => patterns.some((pattern) => matches(url, excludeType, pattern));
 
 export function getNewHref(
   href: string,
@@ -75,35 +48,54 @@ export function getNewHref(
     constants.BLACKLISTED_PREFIXES.some((prefix) => href.startsWith(prefix)) ||
     isExcluded(href, excludeType, excludePatterns)
   ) {
-    console.log('** skipping (1)', href);
     return href;
   }
 
-  // normal link
+  // absolute link
   if (!href.startsWith('/')) {
     return `${constants.MENLO_URL}/${href}`;
   }
 
-  // starting with '/' && not excluded
+  // relative link on a non-excluded page
   if (!isCurrentPageExcluded) {
-    let newHref = constants.MENLO_URL;
-    if (origin) {
-      newHref += `/${origin}`;
-    }
-    newHref += href;
-    return newHref;
+    return `${constants.MENLO_URL}${origin ? `/${origin}` : ''}${href}`;
   }
 
-  // /**
   return href;
 }
 
-export const updateBadgeText = async (on: boolean) => {
-  const text = on ? 'ON' : '';
-  const bgColor = on ? '#3266E3' : '#CCCCCC';
+/** Rewrites `href` of given anchors based on current `location`. */
+export const prependLinks = (
+  anchors: Iterable<HTMLAnchorElement>,
+  excludeType: ExcludeType,
+  excludePatterns: string[],
+): void => {
+  const isCurrentPageExcluded = isExcluded(
+    window.location.href,
+    excludeType,
+    excludePatterns,
+  );
 
+  for (const anchor of anchors) {
+    const href = anchor.getAttribute('href');
+    if (!href) continue;
+
+    const newHref = getNewHref(
+      href,
+      excludeType,
+      excludePatterns,
+      isCurrentPageExcluded,
+      window.location.origin,
+    );
+    if (newHref !== href) anchor.setAttribute('href', newHref);
+  }
+};
+
+export const updateBadgeText = async (on: boolean) => {
   await Promise.all([
-    chrome.action.setBadgeText({ text }),
-    chrome.action.setBadgeBackgroundColor({ color: bgColor }),
+    chrome.action.setBadgeText({ text: on ? 'ON' : '' }),
+    chrome.action.setBadgeBackgroundColor({
+      color: on ? '#3266E3' : '#CCCCCC',
+    }),
   ]);
 };

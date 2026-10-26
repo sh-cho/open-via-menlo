@@ -16,24 +16,16 @@ import {
   Typography,
 } from 'antd';
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { RecoilRoot, useRecoilState } from 'recoil';
+import { createRoot } from 'react-dom/client';
 
-import {
-  ExcludeSetting,
-  excludeSettingState,
-} from '~/recoil/atoms/excludeSetting';
-import { EmptyProps } from '~/utils/types';
+import { useExcludeSetting } from '~/hooks/useExcludeSetting';
+import type { EmptyProps } from '~/utils/types';
 
 const { Text, Title } = Typography;
 const { TextArea } = Input;
 
 export const Options: React.FC<EmptyProps> = () => {
-  // recoil
-  const [excludeSetting, setExcludeSetting] =
-    useRecoilState<ExcludeSetting>(excludeSettingState);
-
-  // antd form
+  const [excludeSetting, setExcludeSetting] = useExcludeSetting();
   const [form] = Form.useForm();
 
   return (
@@ -43,7 +35,7 @@ export const Options: React.FC<EmptyProps> = () => {
         <Col span={16}>
           <Title level={2}>Open-via-menlo options</Title>
           <Alert
-            message={
+            title={
               <span>
                 All data is automatically stored in{' '}
                 <Text code>
@@ -84,7 +76,6 @@ export const Options: React.FC<EmptyProps> = () => {
           <Radio.Group
             value={excludeSetting.excludeType}
             onChange={(e) => {
-              console.log(`excludeType: ${e.target.value}`);
               setExcludeSetting({
                 ...excludeSetting,
                 excludeType: e.target.value,
@@ -112,11 +103,9 @@ export const Options: React.FC<EmptyProps> = () => {
             value={excludeSetting.excludePatterns.join('\n')}
             rows={20}
             onChange={(e) => {
-              const patterns = e.target.value.split('\n');
-              console.log(`excludePatterns: ${patterns}`);
               setExcludeSetting({
                 ...excludeSetting,
-                excludePatterns: patterns,
+                excludePatterns: e.target.value.split('\n'),
               });
             }}
           />
@@ -126,20 +115,20 @@ export const Options: React.FC<EmptyProps> = () => {
       <Row>
         <Col span={4} />
         <Col span={16} style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          {process.env.STAGE === 'dev' && (
+          {import.meta.env.DEV && (
             <>
               <Tag icon={<ToolFilled />} color="error">
                 dev
               </Tag>
-              <Tag icon={<GithubFilled />}>{process.env.COMMIT_HASH}</Tag>
-              <Tag icon={<ClockCircleFilled />}>{process.env.COMMIT_DATE}</Tag>
+              <Tag icon={<GithubFilled />}>{__COMMIT_HASH__}</Tag>
+              <Tag icon={<ClockCircleFilled />}>{__COMMIT_DATE__}</Tag>
             </>
           )}
           <a
-            href={`https://github.com/sh-cho/open-via-menlo/releases/tag/v${process.env.VERSION}`}
+            href={`https://github.com/sh-cho/open-via-menlo/releases/tag/v${__APP_VERSION__}`}
           >
             <Tag icon={<TagFilled />} color="processing">
-              v{process.env.VERSION}
+              v{__APP_VERSION__}
             </Tag>
           </a>
         </Col>
@@ -148,13 +137,8 @@ export const Options: React.FC<EmptyProps> = () => {
   );
 };
 
-const container = document.createElement('div');
-document.body.appendChild(container);
-
-ReactDOM.createRoot(container).render(
+createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RecoilRoot>
-      <Options />
-    </RecoilRoot>
+    <Options />
   </React.StrictMode>,
 );

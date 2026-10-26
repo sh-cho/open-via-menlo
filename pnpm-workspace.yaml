@@ -1,0 +1,12 @@
+# https://pnpm.io/settings
+engineStrict: true
+saveExact: true
+
+# Supply-chain hardening
+minimumReleaseAge: 10080 # 7 days cooldown
+trustPolicy: no-downgrade
+blockExoticSubdeps: true
+strictDepBuilds: true
+allowBuilds: {}
+minimumReleaseAgeExclude:
+  - happy-dom@21.0.4 # GHSA-834v-8h66-3h79

@@ -1,0 +1,45 @@
+amends "package://github.com/jdx/hk/releases/download/v1.44.3/hk@1.44.3#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.44.3/hk@1.44.3#/Builtins.pkl"
+
+local allSteps = new Mapping<String, Step> {
+  ["oxfmt"] {
+    glob = List("**/*.{js,mjs,ts,tsx,json,jsonc,yaml,yml,md,css,html,toml}")
+    batch = true
+    check = "pnpm exec oxfmt --check --no-error-on-unmatched-pattern {{ files }}"
+    fix = "pnpm exec oxfmt --write --no-error-on-unmatched-pattern {{ files }}"
+  }
+  ["oxlint"] = (Builtins.ox_lint) {
+    check = "pnpm exec oxlint {{ files }}"
+    fix = "pnpm exec oxlint --fix {{ files }}"
+  }
+  ["typecheck"] {
+    glob = List("**/*.{ts,tsx}")
+    check = "pnpm typecheck"
+  }
+  ["zizmor"] {
+    glob = List(".github/**/*.{yml,yaml}")
+    check = "zizmor --offline .github"
+  }
+  ["pnpm-audit"] {
+    glob = List("pnpm-lock.yaml")
+    check = "pnpm audit --audit-level low"
+  }
+}
+
+hooks {
+  ["pre-commit"] {
+    fix = true
+    stash = "git"
+    steps = allSteps
+  }
+  ["pre-push"] {
+    steps = allSteps
+  }
+  ["check"] {
+    steps = allSteps
+  }
+  ["fix"] {
+    fix = true
+    steps = allSteps
+  }
+}
