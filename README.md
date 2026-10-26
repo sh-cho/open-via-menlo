@@ -7,9 +7,8 @@
 [![Chrome Web Store Downloads](https://img.shields.io/chrome-web-store/users/noipifnjlcnmakealjopkndknloofcka)](https://chrome.google.com/webstore/detail/open-via-menlo/noipifnjlcnmakealjopkndknloofcka)
 
 <!-- Dev badges -->
-[![Build](https://github.com/sh-cho/open-via-menlo/actions/workflows/build.yaml/badge.svg?branch=main&event=push)](https://github.com/sh-cho/open-via-menlo/actions/workflows/build.yaml)
-[![CI](https://github.com/sh-cho/open-via-menlo/actions/workflows/ci.yaml/badge.svg?branch=main&event=push)](https://github.com/sh-cho/open-via-menlo/actions/workflows/ci.yaml)
-[![actionlint](https://github.com/sh-cho/open-via-menlo/actions/workflows/actionlint.yaml/badge.svg?branch=main&event=push)](https://github.com/sh-cho/open-via-menlo/actions/workflows/actionlint.yaml)
+[![CI](https://github.com/sh-cho/open-via-menlo/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/sh-cho/open-via-menlo/actions/workflows/ci.yml)
+[![zizmor](https://github.com/sh-cho/open-via-menlo/actions/workflows/zizmor.yml/badge.svg?branch=main&event=push)](https://github.com/sh-cho/open-via-menlo/actions/workflows/zizmor.yml)
 
 ---
 
