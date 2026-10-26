@@ -17,5 +17,5 @@
     "types": ["chrome", "node", "vite/client"],
     "paths": { "~/*": ["./src/*"] }
   },
-  "include": ["src", "*.config.ts"]
+  "include": ["src", "e2e", "*.config.ts"]
 }

@@ -20,7 +20,12 @@
     "browser": true,
     "webextensions": true
   },
-  "ignorePatterns": ["dist/**", "coverage/**"],
+  "ignorePatterns": [
+    "dist/**",
+    "coverage/**",
+    "playwright-report/**",
+    "test-results/**"
+  ],
   "rules": {
     "no-console": "off",
     "no-unused-vars": "off",
@@ -47,7 +52,7 @@
   },
   "overrides": [
     {
-      "files": ["*.config.ts"],
+      "files": ["*.config.ts", "e2e/**"],
       "env": {
         "node": true,
         "browser": false
