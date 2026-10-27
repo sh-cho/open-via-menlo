@@ -141,15 +141,42 @@ test.describe('options', () => {
 
 test.describe('context menu', () => {
   test('registers menus on install', async ({ sw }) => {
-    // no API to read menus; re-creating an existing id fails
+    // no API to list menus; `update` fails for unknown ids. Poll since onInstalled runs async.
+    const menuError = (id: string) =>
+      sw.evaluate(
+        (menuId) =>
+          new Promise<string | undefined>((resolve) => {
+            chrome.contextMenus.update(menuId, {}, () =>
+              resolve(chrome.runtime.lastError?.message),
+            );
+          }),
+        id,
+      );
+    await Promise.all(
+      ['open-via-menlo', 'go-back'].map((id) => expect.poll(() => menuError(id)).toBeUndefined()),
+    );
+  });
+
+  test('update fails for unknown menu (sanity)', async ({ sw }) => {
     const error = await sw.evaluate(
       () =>
         new Promise<string | undefined>((resolve) => {
-          chrome.contextMenus.create({ id: 'open-via-menlo', title: 'x' }, () =>
-            resolve(chrome.runtime.lastError?.message),
-          );
+          chrome.contextMenus.update('nope', {}, () => resolve(chrome.runtime.lastError?.message));
         }),
     );
-    expect(error).toMatch(/duplicate id/i);
+    expect(error).toBeTruthy();
+  });
+});
+
+test.describe('tabs API without `tabs` permission', () => {
+  test('creates and updates tabs (used by context menu)', async ({ context, sw }) => {
+    const [page] = await Promise.all([
+      context.waitForEvent('page'),
+      sw.evaluate((url) => chrome.tabs.create({ url }), `${SITE}/created`),
+    ]);
+    await expect(page).toHaveURL(`${SITE}/created`);
+
+    await sw.evaluate((url) => chrome.tabs.update({ url }), `${SITE}/updated`);
+    await expect(page).toHaveURL(`${SITE}/updated`);
   });
 });
