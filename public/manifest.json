@@ -3,7 +3,7 @@
   "name": "Open via Menlo",
   "description": "Unofficial helper to open links via Menlo Security. Not affiliated with Menlo Security.",
   "version": "1.4.1",
-  "permissions": ["contextMenus", "storage", "tabs"],
+  "permissions": ["contextMenus", "storage"],
   "icons": {
     "16": "icon-16.png",
     "32": "icon-32.png",
